@@ -1,6 +1,6 @@
 {
-  "name": "حساببان - حسابداری شخصی",
-  "short_name": "حساببان",
+  "name": "حساب بان - حسابداری شخصی",
+  "short_name": "حساب بان",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
