@@ -27,7 +27,7 @@ button.cal-day.hol{color:#dc2626}
 #mcOv{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px}
 #mcBox{background:#fff;color:inherit;border-radius:16px;padding:14px;width:100%;max-width:380px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 body.dark #mcBox{background:#1f2937}
-.mc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.mc-head{direction:ltr;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
 .mc-head button{border:none;background:rgba(128,128,128,.2);border-radius:8px;padding:6px 12px;font-size:16px;cursor:pointer;color:inherit}
 .mc-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
 .mc-wd{font-size:11px;opacity:.6;padding:3px 0}
@@ -100,7 +100,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px
 .acc-bal.neg{color:var(--red)}.acc-bal.pos{color:var(--em2)}
 .mini-del{background:none;border:none;cursor:pointer;font-size:15px;opacity:.6;padding:4px}
 .cal{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;margin-top:6px;position:relative;z-index:5}
-.cal-head{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px;font-weight:700;font-size:13px}
+.cal-head{direction:ltr;display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px;font-weight:700;font-size:13px}
 .cal-head button{background:var(--em);color:#fff;border:none;border-radius:8px;width:30px;height:28px;cursor:pointer;font-size:14px}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
 .cal-wd{font-size:10.5px;color:var(--mut);padding:2px 0}
@@ -776,7 +776,7 @@ function drawMonthCal(){
   const g1=j2g(mcY,mcM,1),wd=(new Date(g1[0],g1[1]-1,g1[2]).getDay()+1)%7;
   const GM=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const gl=j2g(mcY,mcM,len);
-  let h='<div class="mc-head"><button data-mc="1">‹</button><span>'+toFaDigits(MONTHS[mcM-1]+" "+mcY)+'</span><button data-mc="-1">›</button></div><div class="mc-grid">';
+  let h='<div class="mc-head"><button data-mc="-1">›</button><span>'+toFaDigits(MONTHS[mcM-1]+" "+mcY)+'</span><button data-mc="1">‹</button></div><div class="mc-grid">';
   ["ش","ی","د","س","چ","پ","ج"].forEach(function(d){h+='<div class="mc-wd">'+d+'</div>';});
   for(let i=0;i<wd;i++)h+='<div></div>';
   for(let d=1;d<=len;d++){
@@ -1048,7 +1048,7 @@ function renderCal(){
   const t=jalaliToday(), len=jMonthLen(calY,calM);
   const g=j2g(calY,calM,1), wd=(new Date(g[0],g[1]-1,g[2]).getDay()+1)%7;
   const sel=calSelVal()?canonicalDate(calSelVal()):"";
-  let h='<div class="cal-head"><button type="button" data-cm="1">‹</button><span>'+MONTHS[calM-1]+' '+toFaDigits(calY)+'</span><button type="button" data-cm="-1">›</button></div>';
+  let h='<div class="cal-head"><button type="button" data-cm="-1">›</button><span>'+MONTHS[calM-1]+' '+toFaDigits(calY)+'</span><button type="button" data-cm="1">‹</button></div>';
   h+='<div class="cal-grid">';
   ["ش","ی","د","س","چ","پ","ج"].forEach(function(d){h+='<div class="cal-wd">'+d+'</div>';});
   for(let i=0;i<wd;i++)h+='<div class="cal-blank"></div>';
@@ -1391,7 +1391,7 @@ function renderDCal(){
   const pop=$("#dCalPop"),t=jalaliToday(),len=jMonthLen(dCalY,dCalM);
   const g=j2g(dCalY,dCalM,1),wd=(new Date(g[0],g[1]-1,g[2]).getDay()+1)%7;
   const sel=dDueVal?canonicalDate(dDueVal):"";
-  let h='<div class="cal-head"><button type="button" data-cm="1">‹</button><span>'+MONTHS[dCalM-1]+' '+toFaDigits(dCalY)+'</span><button type="button" data-cm="-1">›</button></div><div class="cal-grid">';
+  let h='<div class="cal-head"><button type="button" data-cm="-1">›</button><span>'+MONTHS[dCalM-1]+' '+toFaDigits(dCalY)+'</span><button type="button" data-cm="1">‹</button></div><div class="cal-grid">';
   ["ش","ی","د","س","چ","پ","ج"].forEach(function(d){h+='<div class="cal-wd">'+d+'</div>';});
   for(let i=0;i<wd;i++)h+='<div class="cal-blank"></div>';
   for(let d=1;d<=len;d++){
