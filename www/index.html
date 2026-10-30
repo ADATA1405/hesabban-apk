@@ -394,7 +394,7 @@ body.dark #catSuggest button{background:#064e3b;color:#a7f3d0;border-color:#0478
   <div class="subnav"><button class="sub-btn" data-tab="tab-budget">🎯 بودجه‌بندی</button><button class="sub-btn" data-tab="tab-chart">📊 نمودارها</button></div>
   <div class="panel" id="healthPanel"><h2>💚 امتیاز سلامت مالی (این ماه)</h2><div id="healthBox"></div></div>
   <div class="panel"><h2>🍩 سهم دسته‌ها از هزینه‌ها (این ماه)</h2><canvas id="doughnut"></canvas></div>
-  <div class="panel"><h2>📊 درآمد در برابر هزینه (۶ ماه اخیر)</h2><canvas id="bars"></canvas></div>
+  <div class="panel"><h2>📊 روند درآمد و هزینه (۱۲ ماه اخیر)</h2><canvas id="bars"></canvas></div>
   <div class="panel"><h2>📅 گزارش سالانه به تفکیک دسته و ماه</h2><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><select id="rYear"></select><button class="btn ghost sm" id="rCsv">⬇️ خروجی CSV</button></div><div id="rOut" style="margin-top:10px"></div></div>
 </section>
 
@@ -730,6 +730,7 @@ function commit(){
   lastSavedAt=new Date();
   const warn=document.getElementById("storageWarn");
   if(warn)warn.style.display=(ok1&&ok2&&store.ok)?"none":"block";
+  if(!(ok1&&ok2)&&typeof toast==="function"&&Date.now()-(commit.lastWarn||0)>8000){commit.lastWarn=Date.now();toast("⚠️ حافظه پر است؛ تغییرات ذخیره نشد! همین حالا از «پشتیبان‌گیری» فایل بگیرید و رسیدهای قدیمی را حذف کنید.","error");}
   return ok1&&ok2;
 }
 function saveDB(){
@@ -793,9 +794,10 @@ function fetchHolYear(jy){
   if(store[jy]||!navigator.onLine)return;
   const ctl=typeof AbortController!=="undefined"?new AbortController():null;
   const tm=setTimeout(function(){if(ctl)ctl.abort();},8000);
-  fetch(HOL_API+jy,{signal:ctl?ctl.signal:undefined}).then(function(r){return r.json();}).then(function(j){
+  fetch(HOL_API+jy,{signal:ctl?ctl.signal:undefined}).then(function(r){if(!r.ok)throw new Error("http "+r.status);return r.json();}).then(function(j){
     clearTimeout(tm);
     if(!j||!j.status||!j.result)return;
+    if(!Object.keys(j.result).length)return;
     const map={};
     Object.keys(j.result).forEach(function(m){
       Object.keys(j.result[m]||{}).forEach(function(d){
@@ -1600,7 +1602,7 @@ function drawBars(){
   const ctx=g.ctx, w=g.w, h=g.h;
   ctx.clearRect(0,0,w,h);
   const ms=[]; let y=cursor[0], m=cursor[1];
-  for(let i=0;i<6;i++){ms.unshift([y,m]);m--;if(m===0){m=12;y--;}}
+  for(let i=0;i<12;i++){ms.unshift([y,m]);m--;if(m===0){m=12;y--;}}
   const rows=ms.map(function(p2){
     const p=p2[0]+"-"+pad2(p2[1]);
     let inc=0,out=0;
@@ -1609,23 +1611,21 @@ function drawBars(){
   });
   let max=1;
   rows.forEach(function(r){max=Math.max(max,r.inc,r.out);});
-  const padT=14,padB=26,L=Math.max(28,w*0.08);
-  const chartW=w-L-10, chartH=h-padT-padB, groupW=chartW/rows.length;
-  rows.forEach(function(r,i){
-    const gx=L+i*groupW, bw=groupW*0.3, gap=groupW*0.08;
-    const bars=[[r.inc,"#10b981",gx+groupW/2-bw-gap/2],[r.out,"#ef4444",gx+groupW/2+gap/2]];
-    bars.forEach(function(bb){
-      const bh=bb[0]/max*chartH;
-      ctx.fillStyle=bb[1];
-      ctx.fillRect(bb[2],h-padB-bh,bw,Math.max(bh,bb[0]>0?2:0));
-    });
-    ctx.fillStyle=chartTextColor();
-    ctx.font="11px Vazirmatn, Tahoma, sans-serif";
-    ctx.textAlign="center";
-    ctx.fillText(r.label,gx+groupW/2,h-8);
+  const padT=26,padB=26,L=10;
+  const chartW=w-L-10, chartH=h-padT-padB, step=chartW/(rows.length-1);
+  const X=function(i){return L+i*step;}, Y=function(v){return h-padB-v/max*chartH;};
+  const grid=document.body.classList.contains("dark")?"#1e2c47":"#e2e8f0";
+  ctx.strokeStyle=grid;ctx.lineWidth=1;
+  for(let k=0;k<=3;k++){const yy=padT+chartH*k/3;ctx.beginPath();ctx.moveTo(L,yy);ctx.lineTo(w-10,yy);ctx.stroke();}
+  ctx.font="10px Vazirmatn, Tahoma, sans-serif";ctx.textAlign="center";ctx.fillStyle=chartTextColor();
+  rows.forEach(function(r,i){if(i%2===(rows.length-1)%2||w>420)ctx.fillText(r.label,X(i),h-8);});
+  [["inc","#10b981"],["out","#ef4444"]].forEach(function(s2){
+    ctx.strokeStyle=s2[1];ctx.fillStyle=s2[1];ctx.lineWidth=2.2;ctx.lineJoin="round";
+    ctx.beginPath();
+    rows.forEach(function(r,i){if(i)ctx.lineTo(X(i),Y(r[s2[0]]));else ctx.moveTo(X(i),Y(r[s2[0]]));});
+    ctx.stroke();
+    rows.forEach(function(r,i){ctx.beginPath();ctx.arc(X(i),Y(r[s2[0]]),2.8,0,6.2832);ctx.fill();});
   });
-  ctx.strokeStyle=document.body.classList.contains("dark")?"#1e2c47":"#e2e8f0";
-  ctx.beginPath();ctx.moveTo(L,padT);ctx.lineTo(L,h-padB);ctx.lineTo(w-10,h-padB);ctx.stroke();
   ctx.textAlign="left";ctx.font="12px Vazirmatn, Tahoma, sans-serif";
   ctx.fillStyle="#10b981";ctx.fillRect(w-116,6,11,11);
   ctx.fillStyle=chartTextColor();ctx.fillText("درآمد",w-102,16);
@@ -1644,7 +1644,8 @@ function renderBackupInfo(){
 async function exportJSON(){
   commit();
   const payload={app:"HesabBan",version:5,exportedAt:new Date().toISOString(),data:DB};
-  const text=JSON.stringify(payload,null,2);
+  try{const rcs=await rcExportAll();if(Object.keys(rcs).length)payload.receipts=rcs;}catch(e){}
+  const text=JSON.stringify(payload,null,payload.receipts?0:2);
   const fname="hesabban-backup-"+jTodayStr()+".json";
   const C=window.Capacitor;
   if(C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.Filesystem){
@@ -1785,6 +1786,25 @@ function backupReminder(){
   toast(msg);
 }
 setTimeout(backupReminder,3000);
+/* پشتیبان خودکار هفتگی (۵ نسخهٔ آخر، فقط در APK، در حافظهٔ اختصاصی برنامه) */
+async function autoBackup(){
+  try{
+    const C=window.Capacitor;
+    if(!(C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.Filesystem))return;
+    if(!(DB.tx||[]).length)return;
+    const last=parseInt(localStorage.getItem("hesabban_auto")||"0",10);
+    if(Date.now()-last<7*86400000)return;
+    const FS=C.Plugins.Filesystem;
+    const text=JSON.stringify({app:"HesabBan",version:5,exportedAt:new Date().toISOString(),data:DB});
+    await FS.writeFile({path:"auto-backups/auto-"+jTodayStr()+".json",data:text,directory:"DATA",encoding:"utf8",recursive:true});
+    localStorage.setItem("hesabban_auto",String(Date.now()));
+    const l=await FS.readdir({path:"auto-backups",directory:"DATA"});
+    const names=(l.files||[]).map(function(f){return f.name||f;}).filter(function(n){return /^auto-.*\.json$/.test(n);}).sort();
+    while(names.length>5){await FS.deleteFile({path:"auto-backups/"+names.shift(),directory:"DATA"});}
+  }catch(e){}
+}
+setTimeout(autoBackup,6000);
+
 function importFile(file){
   const name=String(file.name||"").toLowerCase();
   const rd=new FileReader();
@@ -1827,8 +1847,9 @@ function importFile(file){
           if(bdata.theme)DB.theme=bdata.theme;
           if(bdata.pal)DB.pal=bdata.pal;
         }
+        const nrc=await rcRestore(backupJson);
         commit();applyTheme();renderAll();
-        toast("همه‌ی اطلاعات بازیابی شد ✅");
+        toast("همه‌ی اطلاعات بازیابی شد ✅"+(nrc?" ("+toFaDigits(nrc)+" رسید)":""));
         return;
       }
       if(!cleaned.length)throw new Error("در این فایل تراکنش معتبری پیدا نشد (تاریخ یا مبلغ خوانده نشد).");
@@ -1848,6 +1869,7 @@ function importFile(file){
         const bd=backupJson&&backupJson.data;
         if(bd){["accounts","transfers","inst","assets","goals","debts"].forEach(function(k){if(Array.isArray(bd[k]))DB[k]=bd[k];});if(bd.rel&&typeof bd.rel==="object")DB.rel=bd.rel;}
       }
+      await rcRestore(backupJson);
       commit();applyTheme();
       const first=DB.tx.slice().sort(function(a,b){return b.date.localeCompare(a.date);})[0];
       if(first)cursor=[+first.date.slice(0,4),+first.date.slice(5,7)];
@@ -2841,6 +2863,33 @@ async function savePdf(mode){
     toast("ساخت PDF ناموفق بود: "+(e&&e.message?e.message:e),"error");
   }
 }
+async function saveCsv(){
+  try{
+    const d=repData();
+    const q=function(v){v=String(v==null?"":v);if(/^[=+\-@]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"';};
+    const rows=[["تاریخ","نوع","دسته","مبلغ","حساب","توضیح"]];
+    d.txs.slice().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(t){
+      const c=catInfo(t.type,t.cat);
+      const a=(DB.accounts.find(function(x){return x.id===t.acc;})||{}).name||"";
+      rows.push([t.date,t.type==="income"?"درآمد":"هزینه",c.name,t.amount,a,t.note||""]);
+    });
+    rows.push([]);rows.push(["جمع درآمد","","",d.inc,"",""]);
+    rows.push(["جمع هزینه","","",d.out,"",""]);
+    const text="\uFEFF"+rows.map(function(r){return r.map(q).join(",");}).join("\r\n");
+    const fname="hesabban-"+repKind+"-"+cursor[0]+"-"+pad2(cursor[1])+".csv";
+    const C=window.Capacitor;
+    if(C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.Filesystem){
+      const r=await C.Plugins.Filesystem.writeFile({path:fname,data:btoa(unescape(encodeURIComponent(text))),directory:"CACHE"});
+      if(C.Plugins.Share)await C.Plugins.Share.share({title:fname,files:[r.uri],dialogTitle:"ذخیره یا اشتراک فایل"});
+    }else{
+      const blob=new Blob([text],{type:"text/csv;charset=utf-8"});
+      const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fname;
+      document.body.appendChild(a);a.click();a.remove();
+      setTimeout(function(){URL.revokeObjectURL(a.href);},3000);
+    }
+    toast("فایل اکسل آماده شد ✅");
+  }catch(e){toast("ساخت فایل ناموفق بود: "+(e&&e.message?e.message:e),"error");}
+}
 /* پیش‌نمایش گزارش (خلاصه، درصد دسته‌ها، اهداف) */
 function openReport(){
   const s=repData();
@@ -2899,7 +2948,7 @@ function updateCatSuggest(){
     box=document.createElement("div");box.id="catSuggest";
     n.parentNode.appendChild(box);
   }
-  box.innerHTML="";
+  box.textContent="";
   if(editId)return;
   const type=$("#fType").value;
   const id=suggestCat(type,$("#fNote").value);
@@ -2907,7 +2956,7 @@ function updateCatSuggest(){
   const c=catInfo(type,id);
   const b=document.createElement("button");b.type="button";
   b.textContent="💡 پیشنهاد دسته: "+c.icon+" "+c.name;
-  b.onclick=function(){$("#fCat").value=id;box.innerHTML="";};
+  b.onclick=function(){$("#fCat").value=id;box.textContent="";};
   box.appendChild(b);
 }
 function bindExtras(){
@@ -2981,6 +3030,26 @@ async function rcGet(id){
 function rcDel(id){
   rcOp("readwrite",function(st){return st.delete(id);}).catch(function(){});
   store.del(RC_LS+id);RC_SET.delete(id);
+}
+async function rcExportAll(){
+  const ids=new Set(RC_SET);rcLsKeys().forEach(function(k){ids.add(k);});
+  const out={};
+  for(const id of ids){
+    try{let v=await rcGet(id);if(!v)continue;if(typeof v!=="string")v=await blobToDataURL(v);out[id]=v;}catch(e){}
+  }
+  return out;
+}
+async function rcRestore(j){
+  const r=j&&j.receipts;if(!r||typeof r!=="object")return 0;
+  let n=0;
+  for(const id of Object.keys(r)){
+    try{
+      if(typeof r[id]!=="string"||r[id].indexOf("data:image/")!==0)continue;
+      const b=await (await fetch(r[id])).blob();
+      await rcPut(id,b);RC_SET.add(id);n++;
+    }catch(e){}
+  }
+  return n;
 }
 function refreshRcSet(){
   return rcOp("readonly",function(st){return st.getAllKeys();}).then(function(keys){RC_SET=new Set(keys||[]);})
@@ -3202,6 +3271,7 @@ function init(){
   $("#repClose").onclick=closeReport;
   $("#repOv").onclick=function(e){if(e.target===this)closeReport();};
   $("#repPdf").onclick=savePdf;
+  $("#repCsv").onclick=saveCsv;
   document.querySelectorAll("#repOv [data-k]").forEach(function(b){
     b.onclick=function(){repKind=this.getAttribute("data-k");openReport();};
   });
@@ -3292,7 +3362,7 @@ else init();
   <div class="rp-top"><b>پیش‌نمایش گزارش</b><button id="repClose">✕</button></div>
   <div class="rp-tabs"><button data-k="month">ماهانه</button><button data-k="season">فصلی</button><button data-k="year">سالانه</button></div>
   <div class="rp-body" id="repBody"></div>
-  <div class="rp-btns"><button class="sh" id="repShare">اشتراک‌گذاری</button><button class="dl" id="repPdf">⬇️ دانلود PDF</button></div>
+  <div class="rp-btns"><button class="sh" id="repShare">اشتراک‌گذاری</button><button class="dl" id="repPdf">⬇️ دانلود PDF</button><button class="sh" id="repCsv" style="grid-column:1/-1">📊 خروجی اکسل (CSV)</button></div>
 </div></div>
 </body>
 </html>
