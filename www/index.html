@@ -7,19 +7,20 @@
 <title>حساب‌بان | مدیریت مالی شخصی</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <style>
-:root{--bg:#f1f5f9;--card:#ffffff;--txt:#0f172a;--mut:#64748b;--line:#e2e8f0;--em:#0f766e;--em2:#10b981;--gold:#f59e0b;--red:#ef4444}
+:root{--g1:#0d6b63;--g2:#10b981;--glow:16,185,129;--bg:#f1f5f9;--card:#ffffff;--txt:#0f172a;--mut:#64748b;--line:#e2e8f0;--em:#0f766e;--em2:#10b981;--gold:#f59e0b;--red:#ef4444}
 body.dark{--bg:#0b1220;--card:#111c30;--txt:#e2e8f0;--mut:#94a3b8;--line:#1e2c47}
 body.dark nav{background:#111c30;box-shadow:0 -2px 14px rgba(0,0,0,.45)}
-body.dark .nav-btn.active span{background:rgba(16,185,129,.22)}
+body.dark .nav-btn.active span{background:rgba(var(--glow),.22)}
 body.dark .panel,body.dark .card{box-shadow:0 1px 4px rgba(0,0,0,.35)}
-body.dark .btn{box-shadow:0 2px 8px rgba(16,185,129,.2)}
+body.dark .btn{box-shadow:0 2px 8px rgba(var(--glow),.2)}
 *{box-sizing:border-box;margin:0;padding:0;font-family:Vazirmatn,Tahoma,sans-serif}
 body{background:var(--bg);color:var(--txt);padding-bottom:62px}
-header{position:sticky;top:0;background:linear-gradient(135deg,#0d6b63,#10b981);box-shadow:0 2px 10px rgba(5,150,105,.25);color:#fff;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+header{position:sticky;top:0;background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 2px 10px rgba(var(--glow),.25);color:#fff;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;z-index:5}
 header h1{font-size:15px;line-height:1.2}
 .hdate{display:flex;align-items:center;gap:6px}
 #todayLabel{font-size:11.5px;opacity:.95;background:rgba(255,255,255,.16);border-radius:8px;padding:3px 8px;white-space:nowrap}
 #themeBtn{background:rgba(255,255,255,.2);border:none;color:#fff;font-size:15px;border-radius:9px;padding:4px 8px;cursor:pointer}
+#setBtn{background:linear-gradient(135deg,rgba(var(--glow),.35),rgba(13,107,99,.35));border:1px solid rgba(255,255,255,.35);color:#fff;font-size:17px;line-height:1;border-radius:9px;padding:4px 9px;cursor:pointer;font-family:"Noto Color Emoji","Segoe UI Emoji",sans-serif;box-shadow:none}
 .nav-month{display:flex;justify-content:space-between;align-items:center;padding:5px 12px;gap:5px;flex-wrap:nowrap}
 .nav-month button{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:9px;padding:5px 8px;cursor:pointer;font-size:11.5px;white-space:nowrap}
 button.cal-day.hol{color:#dc2626}
@@ -41,7 +42,7 @@ body.dark #mcBox{background:#1f2937}
 .nav-month button{border-radius:10px;font-weight:600}
 #monthLabel{color:#0d6b63}
 body.dark #monthLabel{color:#34d399}
-#todayBtn{background:linear-gradient(135deg,#0d6b63,#10b981)!important;color:#fff!important;border:none!important}
+#todayBtn{background:linear-gradient(135deg,var(--g1),var(--g2))!important;color:#fff!important;border:none!important}
 header{border-bottom-left-radius:18px;border-bottom-right-radius:18px}
 #todayLabel{background:rgba(255,255,255,.2);padding:3px 10px;border-radius:20px;font-size:11px}
 #todayBtn{background:var(--em);border-color:var(--em);color:#fff;font-size:11px}
@@ -58,8 +59,8 @@ input,select,textarea{width:100%;background:var(--bg);color:var(--txt);border:1p
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:5px}
 .date3{display:grid;grid-template-columns:1.1fr 1.3fr .9fr;gap:5px}
 .date3 select{padding:6px 3px;font-size:13px;font-weight:600}
-.btn{width:100%;margin-top:6px;background:linear-gradient(135deg,#0f766e,#10b981);color:#fff;border:none;border-radius:12px;box-shadow:0 2px 6px rgba(5,150,105,.25);padding:8px;font-size:13px;font-weight:700;cursor:pointer}
-.btn.gold{background:var(--gold);color:#1f2937}
+.btn{width:100%;margin-top:6px;background:linear-gradient(135deg,var(--em),var(--g2));color:#fff;border:none;border-radius:12px;box-shadow:0 2px 6px rgba(var(--glow),.25);padding:8px;font-size:13px;font-weight:700;cursor:pointer}
+.btn.gold{background:linear-gradient(135deg,#4f46e5,#6366f1);color:#fff}
 .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
 .btn.sm{margin-top:4px;padding:6px;font-size:11.5px;font-weight:600}
 .tx-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line)}
@@ -85,7 +86,7 @@ canvas{width:100%;height:260px;display:block}
 body.dark #storageWarn{background:#3b2f0b;color:#fde68a;border-color:#a16207}
 nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.08);border-radius:16px 16px 0 0;display:flex;z-index:6;padding-bottom:env(safe-area-inset-bottom)}
 .nav-btn{flex:1;min-width:0;background:none;border:none;color:var(--mut);font-size:10px;padding:6px 0 5px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
-.nav-btn{transition:color .2s}.nav-btn span{font-size:17px;display:block;padding:3px 9px;border-radius:12px;transition:background .2s}.nav-btn.active{color:var(--em);font-weight:700}.nav-btn.active span{background:rgba(16,185,129,.16)}
+.nav-btn{transition:color .2s}.nav-btn span{font-size:17px;display:block;padding:3px 9px;border-radius:12px;transition:background .2s}.nav-btn.active{color:var(--em);font-weight:700}.nav-btn.active span{background:rgba(var(--glow),.16)}
 @media(max-width:380px){.card-value{font-size:11px}}
 /* ---- Toast ---- */
 #toastBox{position:fixed;bottom:88px;left:50%;transform:translateX(-50%);z-index:500;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
@@ -131,9 +132,9 @@ body.dark #instAlert .alert.late{background:#450a0a;color:#fecaca;border-color:#
 
 /* ---- v3: ۵ تب، زیرتب‌ها، دکمه + فقط در تراکنش‌ها ---- */
 .subnav{display:flex;gap:6px;margin:0 0 8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px}
-.sub-btn{flex:1;border:none;background:none;color:var(--mut);padding:7px 4px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer}
-.sub-btn.active{background:rgba(16,185,129,.16);color:var(--em);font-weight:700}
-#fab{display:flex;position:fixed;bottom:calc(78px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:120;width:58px;height:58px;border-radius:50%;border:none;background:linear-gradient(135deg,#0f766e,#10b981);color:#fff;font-size:30px;line-height:1;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(15,118,110,.4);cursor:pointer}
+.sub-btn{flex:1 1 auto;white-space:nowrap;border:none;background:none;color:var(--mut);padding:7px 6px;border-radius:10px;font-size:11px;font-weight:600;cursor:pointer}
+.sub-btn.active{background:rgba(var(--glow),.16);color:var(--em);font-weight:700}
+#fab{display:flex;position:fixed;bottom:calc(78px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:120;width:58px;height:58px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--em),var(--g2));color:#fff;font-size:30px;line-height:1;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(15,118,110,.4);cursor:pointer}
 #fab:active{transform:translateX(-50%) scale(.94)}
 #sheetBg{position:fixed;inset:0;background:rgba(15,23,42,.4);opacity:0;pointer-events:none;transition:opacity .25s;z-index:150}
 #sheetBg.open{opacity:1;pointer-events:auto}
@@ -176,6 +177,7 @@ body.dark #catSuggest button{background:#064e3b;color:#a7f3d0;border-color:#0478
 .hs-score{font-size:42px;font-weight:800;text-align:center}.hs-lbl{text-align:center;font-size:13px;margin-bottom:8px}
 .hs-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--line)}
 #instAlert .alert{cursor:pointer}
+.pal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.pal-btn{border:2px solid var(--line);background:var(--card);color:var(--txt);border-radius:12px;padding:10px;font-size:13px;display:flex;align-items:center;gap:8px;cursor:pointer}.pal-btn.on{border-color:var(--em);font-weight:700}.pal-sw{width:26px;height:26px;border-radius:50%;flex:0 0 26px}
 </style>
 <link rel="manifest" href="./manifest.json"><meta name="theme-color" content="#0f766e"><link rel="icon" href="./icon-192.png">
 <style>
@@ -209,7 +211,7 @@ body.dark #catSuggest button{background:#064e3b;color:#a7f3d0;border-color:#0478
 <body>
 <header>
   <div><h1>🐘 حساب‌بان</h1></div>
-  <div class="hdate"><span id="todayLabel"></span><button id="themeBtn" title="تغییر پوسته">🌙</button></div>
+  <div class="hdate"><span id="todayLabel"></span><button id="setBtn" title="تنظیمات">⚙️</button> <button id="themeBtn" title="تغییر پوسته">🌙</button></div>
 </header>
 
 <div class="nav-month">
@@ -367,6 +369,7 @@ body.dark #catSuggest button{background:#064e3b;color:#a7f3d0;border-color:#0478
 </section>
 
 <section id="tab-goals" class="page">
+  <div class="subnav"><button class="sub-btn" data-tab="tab-goals">🏆 اهداف</button><button class="sub-btn" data-tab="tab-kh">💝 خیرات</button></div>
   <div class="panel">
     <h2 id="goalFormTitle">🏆 هدف مالی جدید</h2>
     <div class="hint">پس‌انداز ماهانه اختیاری است؛ با هر بار باز شدن برنامه در ماه جدید، به‌صورت خودکار به هدف اضافه می‌شود (ماه جاری هم حساب می‌شود). این مبالغ از حساب‌ها کم نمی‌شود.</div>
@@ -392,13 +395,18 @@ body.dark #catSuggest button{background:#064e3b;color:#a7f3d0;border-color:#0478
   <div class="panel" id="healthPanel"><h2>💚 امتیاز سلامت مالی (این ماه)</h2><div id="healthBox"></div></div>
   <div class="panel"><h2>🍩 سهم دسته‌ها از هزینه‌ها (این ماه)</h2><canvas id="doughnut"></canvas></div>
   <div class="panel"><h2>📊 درآمد در برابر هزینه (۶ ماه اخیر)</h2><canvas id="bars"></canvas></div>
+  <div class="panel"><h2>📅 گزارش سالانه به تفکیک دسته و ماه</h2><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><select id="rYear"></select><button class="btn ghost sm" id="rCsv">⬇️ خروجی CSV</button></div><div id="rOut" style="margin-top:10px"></div></div>
 </section>
 
 <section id="tab-backup" class="page">
+  <div class="subnav"><button class="sub-btn" data-tab="tab-backup">💾 پشتیبان</button><button class="sub-btn" data-tab="tab-lock">🔒 قفل</button><button class="sub-btn" data-tab="tab-look">🎨 ظاهر</button><button class="sub-btn" data-tab="tab-rc">🧾 رسید</button></div>
   <div class="panel">
     <h2>💾 پشتیبان‌گیری و بازیابی</h2>
     <div id="backupInfo" class="hint"></div>
     <button class="btn gold" id="exportBtn">⬇️ دریافت فایل پشتیبان (JSON)</button>
+    <div class="panel" id="insights"></div>
+    <button class="btn" id="shareTxtBtn">📤 اشتراک‌گذاری خلاصه ماه (متن)</button>
+    <button class="btn" id="shareImgBtn">🖼️ اشتراک‌گذاری خلاصه ماه (تصویر)</button>
     <button class="btn" id="pdfBtn">📄 گزارش PDF ماه جاری</button>
     <div class="hint">گزارش شامل جمع درآمد/هزینه، خلاصه هزینه‌ها بر اساس دسته و فهرست تراکنش‌های ماه انتخاب‌شده است.</div>
     <label>بازیابی از فایل پشتیبان (JSON) یا صورت‌حساب بانک (CSV):</label>
@@ -407,11 +415,76 @@ body.dark #catSuggest button{background:#064e3b;color:#a7f3d0;border-color:#0478
       با انتخاب فایل می‌پرسیم «افزودن به تراکنش‌های فعلی» یا «جایگزینی کامل». تراکنش‌های تکراری خودکار حذف می‌شوند.
       تاریخ‌های میلادی ذخیره‌شده (۲۰۲۶-…) هم خودکار به شمسی تبدیل می‌شوند.
     </div>
+    <div class="hint">⚠️ عکس رسیدها در فایل پشتیبان نیستند (فقط روی همین دستگاه ذخیره می‌شوند).</div>
     <button class="btn ghost sm" id="demoBtn">🧪 افزودن ۵ تراکنش نمونه</button>
     <button class="btn ghost sm" id="resetBtn">🧹 پاک‌کردن همه‌ی داده‌ها</button>
   </div>
 </section>
+<section id="tab-lock" class="page">
+  <div class="subnav"><button class="sub-btn" data-tab="tab-backup">💾 پشتیبان</button><button class="sub-btn" data-tab="tab-lock">🔒 قفل</button><button class="sub-btn" data-tab="tab-look">🎨 ظاهر</button><button class="sub-btn" data-tab="tab-rc">🧾 رسید</button></div>
+<div class="panel" id="lockPanel">
+  <h2>🔒 قفل برنامه</h2>
+  <div class="hint" id="lockState"></div>
+  <label>نوع قفل</label>
+  <select id="lkType"><option value="pin">رمز عددی (PIN)</option><option value="pass">رمز متنی (پسورد)</option></select>
+  <label>رمز جدید</label><input type="password" id="lkNew" autocomplete="off">
+  <label>تکرار رمز</label><input type="password" id="lkNew2" autocomplete="off">
+  <label>سؤال امنیتی (برای فراموشی رمز)</label>
+  <select id="lkQ"><option>نام مادر شما؟</option><option>شهر تولد شما؟</option><option>نام اولین مدرسه‌تان؟</option><option>نام بهترین دوست دوران کودکی؟</option><option>نام اولین حیوان خانگی شما؟</option><option>نام پدر شما؟</option><option>کوچک‌ترین خواهر یا برادر شما؟</option><option>اسم خیابانی که در کودکی در آن زندگی می‌کردید؟</option><option>مارک اولین خودروی شما؟</option><option>غذای مورد علاقه‌ی شما؟</option><option>نام شهر محل تولد پدرتان؟</option><option>رشته‌ی تحصیلی شما؟</option></select>
+  <label>پاسخ</label><input type="text" id="lkA" autocomplete="off">
+  <label>قفل‌شدن خودکار بعد از خروج از برنامه</label>
+  <select id="lkT"><option value="0">بلافاصله</option><option value="1">۱ دقیقه</option><option value="5" selected>۵ دقیقه</option><option value="15">۱۵ دقیقه</option><option value="30">۳۰ دقیقه</option></select>
+  <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="lkBio" style="width:auto"> ورود با اثرانگشت (همراه رمز، فقط در اپ اندروید)</label>
+  <button class="btn" id="lkSave">فعال‌سازی / ذخیره قفل</button>
+  <button class="btn ghost sm" id="lkOff">غیرفعال‌کردن قفل</button>
+  <div class="hint">قفل فقط ورود به برنامه را محافظت می‌کند و داده‌ها رمزگذاری نمی‌شوند. اثرانگشت نیاز به افزونهٔ بومی دارد و فعلاً در دسترس نیست.</div>
+</div></section>
+<section id="tab-rc" class="page">
+  <div class="subnav"><button class="sub-btn" data-tab="tab-backup">💾 پشتیبان</button><button class="sub-btn" data-tab="tab-lock">🔒 قفل</button><button class="sub-btn" data-tab="tab-look">🎨 ظاهر</button><button class="sub-btn" data-tab="tab-rc">🧾 رسید</button></div>
+  <div class="panel">
+    <h2>🧾 مدیریت عکس‌های رسید</h2>
+    <div class="hint" id="rcMgrInfo">در حال بررسی…</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0">
+      <button class="btn ghost sm" id="rcOrphanBtn">🧹 حذف عکس‌های بدون تراکنش</button>
+      <button class="btn ghost sm" id="rcAllBtn">🗑️ حذف همه</button>
+    </div>
+    <div id="rcList"></div>
+  </div>
+</section>
+<section id="tab-look" class="page">
+  <div class="subnav"><button class="sub-btn" data-tab="tab-backup">💾 پشتیبان</button><button class="sub-btn" data-tab="tab-lock">🔒 قفل</button><button class="sub-btn" data-tab="tab-look">🎨 ظاهر</button><button class="sub-btn" data-tab="tab-rc">🧾 رسید</button></div>
+  <div class="panel">
+    <h2>🎨 ظاهر برنامه</h2>
+    <div class="hint">رنگ اصلی برنامه را انتخاب کنید. حالت روشن/تاریک با دکمه‌ی 🌙 بالای صفحه عوض می‌شود.</div>
+    <div id="palGrid" class="pal-grid"></div>
+    <button class="btn gold" onclick="toggleTheme()">🌗 تغییر حالت روشن / تاریک</button>
+  </div>
+</section>
+<section id="tab-kh" class="page"><div class="subnav"><button class="sub-btn" data-tab="tab-goals">🏆 اهداف</button><button class="sub-btn" data-tab="tab-kh">💝 خیرات</button></div><div class="subnav"><button class="sub-btn" data-tab="tab-kh">☪️ خمس</button><button class="sub-btn" data-tab="tab-zk">🌾 زکات</button><button class="sub-btn" data-tab="tab-ch">🤲 صدقه</button><button class="sub-btn" data-tab="tab-nz">🤍 نذر</button></div><div class="panel" id="khBody"></div></section>
+<section id="tab-zk" class="page"><div class="subnav"><button class="sub-btn" data-tab="tab-goals">🏆 اهداف</button><button class="sub-btn" data-tab="tab-kh">💝 خیرات</button></div><div class="subnav"><button class="sub-btn" data-tab="tab-kh">☪️ خمس</button><button class="sub-btn" data-tab="tab-zk">🌾 زکات</button><button class="sub-btn" data-tab="tab-ch">🤲 صدقه</button><button class="sub-btn" data-tab="tab-nz">🤍 نذر</button></div><div class="panel" id="zkBody"></div></section>
+<section id="tab-ch" class="page"><div class="subnav"><button class="sub-btn" data-tab="tab-goals">🏆 اهداف</button><button class="sub-btn" data-tab="tab-kh">💝 خیرات</button></div><div class="subnav"><button class="sub-btn" data-tab="tab-kh">☪️ خمس</button><button class="sub-btn" data-tab="tab-zk">🌾 زکات</button><button class="sub-btn" data-tab="tab-ch">🤲 صدقه</button><button class="sub-btn" data-tab="tab-nz">🤍 نذر</button></div><div class="panel" id="chBody"></div></section>
+<section id="tab-nz" class="page"><div class="subnav"><button class="sub-btn" data-tab="tab-goals">🏆 اهداف</button><button class="sub-btn" data-tab="tab-kh">💝 خیرات</button></div><div class="subnav"><button class="sub-btn" data-tab="tab-kh">☪️ خمس</button><button class="sub-btn" data-tab="tab-zk">🌾 زکات</button><button class="sub-btn" data-tab="tab-ch">🤲 صدقه</button><button class="sub-btn" data-tab="tab-nz">🤍 نذر</button></div><div class="panel" id="nzBody"></div></section>
+<section id="tab-fin" class="page">
+  <div id="fpBody"></div>
+</section>
+
 </main>
+<div id="lockOv" style="display:none;position:fixed;inset:0;z-index:100000;background:linear-gradient(135deg,var(--g1),var(--g2));align-items:center;justify-content:center;padding:20px">
+  <div style="background:var(--card);color:var(--txt);border-radius:18px;padding:18px;width:100%;max-width:340px;text-align:center">
+    <div style="font-size:34px">🔒</div><h2 style="margin:6px 0 10px">حساب‌بان</h2>
+    <input type="password" id="lkIn" autocomplete="off" style="text-align:center;font-size:18px" placeholder="رمز را وارد کنید">
+    <div id="lkMsg" style="color:#ef4444;font-size:12px;min-height:18px;margin-top:6px"></div>
+    <button class="btn" id="lkGo">ورود</button>
+    <button class="btn gold" id="lkBioGo" style="display:none">👆 ورود با اثرانگشت</button>
+    <button class="btn ghost sm" id="lkForgot">رمز را فراموش کرده‌ام</button>
+    <div id="lkRec" style="display:none;margin-top:8px">
+      <div id="lkQT" class="hint"></div>
+      <input type="text" id="lkAns" autocomplete="off">
+      <button class="btn sm" id="lkAnsGo">بررسی پاسخ و حذف رمز</button>
+      <button class="btn ghost sm" id="lkWipe" style="color:#ef4444">پاک‌کردن همهٔ داده‌ها و شروع دوباره</button>
+    </div>
+  </div>
+</div>
 
 <button id="fab" type="button" aria-label="ثبت تراکنش">+</button>
 <nav>
@@ -420,7 +493,7 @@ body.dark #catSuggest button{background:#064e3b;color:#a7f3d0;border-color:#0478
   <button class="nav-btn" data-tab="tab-budget"><span>📊</span>بودجه/نمودار</button>
   <button class="nav-btn" data-tab="tab-goals"><span>🏆</span>اهداف</button>
   <button class="nav-btn" data-tab="tab-inst"><span>⏰</span>اقساط/سرمایه</button>
-  <button class="nav-btn" data-tab="tab-backup"><span>💾</span>پشتیبان</button>
+  <button class="nav-btn" data-tab="tab-fin"><span>🧠</span>شخصیت مالی</button>
 </nav>
 <div id="sheetBg"></div>
 <div id="sheet">
@@ -437,6 +510,9 @@ body.dark #catSuggest button{background:#064e3b;color:#a7f3d0;border-color:#0478
       <div><label>یادداشت</label><input id="fNote" placeholder="اختیاری"></div>
     </div>
     <label>حساب بانکی</label><select id="fAcc"></select>
+    <label>برچسب</label><select id="fTag"></select>
+    <label>📎 عکس رسید (اختیاری)</label><input type="file" id="fReceipt" accept="image/*">
+    <label id="fRecRow" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="fRec" style="width:auto"> 🔁 هر ماه در همین روز تکرار شود</label>
     <label>تاریخ (شمسی) — سال / ماه / روز</label>
     <div class="date3">
       <select id="fYear" aria-label="سال"></select>
@@ -501,7 +577,7 @@ function jalaliToday(){const n=new Date();return g2j(n.getFullYear(),n.getMonth(
 function jMonthLen(jy,jm){
   if(jm<=6)return 31;
   if(jm<=11)return 30;
-  return ((((((jy-((jy>0)?474:473))%2820)+474+38)*682)%2816)<682)?30:29;
+  return [1,5,9,13,17,22,26,30].indexOf(jy%33)>=0?30:29;
 }
 function pad2(n){return String(n).padStart(2,"0");}
 function jTodayStr(){const t=jalaliToday();return t[0]+"-"+pad2(t[1])+"-"+pad2(t[2]);}
@@ -560,7 +636,7 @@ const store={
 
 const CATS={
   income:[{id:"salary",name:"حقوق",icon:"💰"},{id:"freelance",name:"کار آزاد",icon:"💼"},{id:"gift",name:"هدیه",icon:"🎁"},{id:"other-in",name:"سایر",icon:"➕"}],
-  expense:[{id:"food",name:"خوراک",icon:"🍽️"},{id:"transport",name:"حمل‌ونقل",icon:"🚌"},{id:"home",name:"خانه",icon:"🏠"},{id:"bills",name:"قبض‌ها",icon:"🧾"},{id:"health",name:"سلامت",icon:"💊"},{id:"fun",name:"سرگرمی",icon:"🎮"},{id:"clothes",name:"پوشاک",icon:"👕"},{id:"other-out",name:"سایر",icon:"➖"}]
+  expense:[{id:"food",name:"خوراک",icon:"🍽️"},{id:"transport",name:"حمل‌ونقل",icon:"🚌"},{id:"home",name:"خانه",icon:"🏠"},{id:"bills",name:"قبض‌ها",icon:"🧾"},{id:"health",name:"سلامت",icon:"💊"},{id:"fun",name:"سرگرمی",icon:"🎮"},{id:"clothes",name:"پوشاک",icon:"👕"},{id:"charity",name:"صدقه",icon:"🤲"},{id:"help",name:"کمک به دیگران",icon:"💝"},{id:"khums",name:"خمس پرداختی",icon:"☪️",hid:1},{id:"zakat",name:"زکات پرداختی",icon:"🌾",hid:1},{id:"nazr",name:"نذر",icon:"🤍",hid:1},{id:"other-out",name:"سایر",icon:"➖"}]
 };
 const CAT_MAP={};
 CATS.income.concat(CATS.expense).forEach(function(c){CAT_MAP[c.id]=c;});
@@ -597,7 +673,7 @@ let editId=null;
 let flushTimer=0;
 let lastSavedAt=null;
 
-function emptyDB(){return {theme:"light",budget:{},tx:[],accounts:[],transfers:[],inst:[],assets:[],goals:[],debts:[]};}
+function emptyDB(){return {theme:"light",pal:"green",budget:{},tx:[],accounts:[],transfers:[],inst:[],assets:[],goals:[],debts:[]};}
 
 /* اگر برنامه‌ی قبلی تاریخ را میلادی ذخیره کرده باشد (مثل 2026-10-15)،
    همان تراکنش‌های «گم‌شده» را به تاریخ شمسی برمی‌گردانیم. */
@@ -621,6 +697,7 @@ function loadDB(){
   else DB=emptyDB();
   if(!DB.budget||Array.isArray(DB.budget)||typeof DB.budget!=="object")DB.budget={};
   if(DB.theme!=="dark")DB.theme="light";
+  if(["green","blue","pink","purple","cyan"].indexOf(DB.pal)<0)DB.pal="green";
   ["accounts","transfers","inst","assets","goals","debts"].forEach(function(k){if(!Array.isArray(DB[k]))DB[k]=[];});
   const clean=[];
   (DB.tx||[]).forEach(function(t,i){
@@ -691,7 +768,7 @@ function monthSums(){
 
 /* -------------------------------- نمایش -------------------------------- */
 function $(s){return document.querySelector(s);}
-function renderAll(){applyMonthlyGoals();renderHeader();renderSummary();renderTxList();renderBudgets();renderBudgetSummary();renderAccounts();renderInst();renderDebts();renderAssets();renderGoals();renderBudgets();drawDoughnut();drawBars();renderBackupInfo();}
+function renderAll(){runRecurring();applyMonthlyGoals();renderHeader();renderSummary();renderTxList();renderBudgets();renderBudgetSummary();renderAccounts();renderInst();renderDebts();renderAssets();renderGoals();renderBudgets();drawDoughnut();drawBars();renderBackupInfo();renderRec();renderReport();renderInsights();}
 
 function renderHeader(){
   const ml=$("#monthLabel");
@@ -802,6 +879,7 @@ function txFilters(){
     type:($("#txFilterType")&&$("#txFilterType").value)||"all",
     cat:($("#txFilterCat")&&$("#txFilterCat").value)||"all",
     acc:($("#txFilterAcc")&&$("#txFilterAcc").value)||"all",
+    tag:($("#txFilterTag")&&$("#txFilterTag").value)||"all",
     min:parseAmount($("#txMin")?$("#txMin").value:"" )||0,
     max:parseAmount($("#txMax")?$("#txMax").value:"")||0
   };
@@ -810,6 +888,7 @@ function txMatches(t,f){
   if(f.type!=="all"&&t.type!==f.type)return false;
   if(f.cat!=="all"&&t.cat!==f.cat)return false;
   if(f.acc!=="all"&&String(t.acc||"")!==f.acc)return false;
+  if(f.tag&&f.tag!=="all"&&(t.tag||"")!==f.tag)return false;
   const amt=+t.amount||0;
   if(f.min&&amt<f.min)return false;
   if(f.max&&amt>f.max)return false;
@@ -870,10 +949,11 @@ function renderTxList(){
     const c=catInfo(t.type,t.cat);
     return '<div class="tx-item '+t.type+'">'+
       '<div class="tx-icon">'+c.icon+'</div>'+
-      '<div class="tx-main"><div class="tx-title">'+esc(c.name)+'</div>'+
+      '<div class="tx-main"><div class="tx-title">'+esc(c.name)+(tagInfo(t.tag).c?' <span style="color:'+tagInfo(t.tag).c+'">●</span>':'')+'</div>'+
       '<div class="tx-sub">'+esc(t.note||"—")+' · '+jDateFa(t.date)+'</div></div>'+
       '<div class="tx-amt">'+(t.type==="income"?"+":"−")+toFaMoney(t.amount)+'</div>'+
       '<div class="tx-actions">'+
+      ((RC_SET.has(t.id)||t.rc)?'<button class="tx-edit" data-rc="'+t.id+'" title="عکس رسید" aria-label="عکس رسید">📎</button>':'')+
       '<button class="tx-edit" data-edit="'+t.id+'" title="ویرایش" aria-label="ویرایش">✏️</button>'+
       '<button class="tx-del" data-del="'+t.id+'" title="حذف" aria-label="حذف">🗑</button>'+
       '</div></div>';
@@ -1387,6 +1467,20 @@ function bindDebts(){
     if(p)payDebt(p);else if(x)delDebt(x);
   };
 }
+let nzDVal="",nzCalY=0,nzCalM=0;
+function renderNzCal(){
+  const pop=$("#nzCalPop"),t=jalaliToday(),len=jMonthLen(nzCalY,nzCalM);
+  const g=j2g(nzCalY,nzCalM,1),wd=(new Date(g[0],g[1]-1,g[2]).getDay()+1)%7;
+  const sel=nzDVal?canonicalDate(nzDVal):"";
+  let h='<div class="cal-head"><button type="button" data-cm="1">›</button><span>'+MONTHS[nzCalM-1]+' '+toFaDigits(nzCalY)+'</span><button type="button" data-cm="-1">‹</button></div><div class="cal-grid">';
+  ["ش","ی","د","س","چ","پ","ج"].forEach(function(d){h+='<div class="cal-wd">'+d+'</div>';});
+  for(let i=0;i<wd;i++)h+='<div class="cal-blank"></div>';
+  for(let d=1;d<=len;d++){
+    const key=nzCalY+"-"+pad2(nzCalM)+"-"+pad2(d);
+    h+='<button type="button" class="cal-day'+(holName(nzCalY,nzCalM,d)||(wd+d-1)%7===6?" hol":"")+(key===sel?" sel":"")+(t[0]+"-"+pad2(t[1])+"-"+pad2(t[2])===key?" today":"")+'" data-day="'+key+'">'+toFaDigits(d)+'</button>';
+  }
+  pop.innerHTML=h+'</div>';
+}
 function renderDCal(){
   const pop=$("#dCalPop"),t=jalaliToday(),len=jMonthLen(dCalY,dCalM);
   const g=j2g(dCalY,dCalM,1),wd=(new Date(g[0],g[1]-1,g[2]).getDay()+1)%7;
@@ -1560,7 +1654,7 @@ async function exportJSON(){
       if(C.Plugins.Share){
         await C.Plugins.Share.share({title:fname,text:"فایل پشتیبان حساب بان",files:[r.uri],dialogTitle:"ذخیره پشتیبان"});
       }
-      toast("فایل پشتیبان ساخته شد ✅");
+      markBackup();toast("فایل پشتیبان ساخته شد ✅");
     }catch(e){
       toast("ساخت پشتیبان ناموفق بود: "+(e&&e.message?e.message:e));
     }
@@ -1572,7 +1666,7 @@ async function exportJSON(){
   a.download=fname;
   document.body.appendChild(a);a.click();a.remove();
   setTimeout(function(){URL.revokeObjectURL(a.href);},3000);
-  toast("فایل پشتیبان ساخته شد ✅");
+  markBackup();toast("فایل پشتیبان ساخته شد ✅");
   return a.download;
 }
 function pickTxArray(j){
@@ -1678,6 +1772,19 @@ function mergeTx(cur,add){
   cur.concat(add).forEach(function(t){const k=key(t);if(seen[k])return;seen[k]=1;out.push(t);});
   return out;
 }
+/* ---- یادآوری پشتیبان‌گیری ---- */
+const BK_KEY="hesabban_bk";
+function markBackup(){try{localStorage.setItem(BK_KEY,String(Date.now()));}catch(e){}}
+function backupReminder(){
+  const n=(DB.tx||[]).length;
+  if(!n) return;
+  const last=parseInt(localStorage.getItem(BK_KEY)||"0",10);
+  const days=last?(Date.now()-last)/86400000:999;
+  if(days<7) return;
+  const msg=last?("آخرین پشتیبان "+Math.floor(days)+" روز پیش بود. یک فایل پشتیبان ذخیره کنید ⬇️"):"هنوز فایل پشتیبان نگرفته‌اید. از تب پشتیبان‌گیری یک فایل ذخیره کنید ⬇️";
+  toast(msg);
+}
+setTimeout(backupReminder,3000);
 function importFile(file){
   const name=String(file.name||"").toLowerCase();
   const rd=new FileReader();
@@ -1718,6 +1825,7 @@ function importFile(file){
           lists.forEach(function(k){if(Array.isArray(bdata[k]))DB[k]=bdata[k];});
           if(hasBud)DB.budget=bdata.budget;
           if(bdata.theme)DB.theme=bdata.theme;
+          if(bdata.pal)DB.pal=bdata.pal;
         }
         commit();applyTheme();renderAll();
         toast("همه‌ی اطلاعات بازیابی شد ✅");
@@ -1736,8 +1844,9 @@ function importFile(file){
         const bud=(backupJson&&backupJson.data&&backupJson.data.budget)||(backupJson&&backupJson.budget);
         if(bud&&typeof bud==="object"&&!Array.isArray(bud))DB.budget=bud;
         if(backupJson&&backupJson.data&&backupJson.data.theme)DB.theme=backupJson.data.theme;
+        if(backupJson&&backupJson.data&&backupJson.data.pal)DB.pal=backupJson.data.pal;
         const bd=backupJson&&backupJson.data;
-        if(bd){["accounts","transfers","inst","assets","goals","debts"].forEach(function(k){if(Array.isArray(bd[k]))DB[k]=bd[k];});}
+        if(bd){["accounts","transfers","inst","assets","goals","debts"].forEach(function(k){if(Array.isArray(bd[k]))DB[k]=bd[k];});if(bd.rel&&typeof bd.rel==="object")DB.rel=bd.rel;}
       }
       commit();applyTheme();
       const first=DB.tx.slice().sort(function(a,b){return b.date.localeCompare(a.date);})[0];
@@ -1775,11 +1884,33 @@ async function resetAll(){
 }
 
 /* --------------------- پوسته / تب‌ها / ناوبری ماه --------------------- */
+const PALS={
+  green:{name:"سبز",em:"#0f766e",g1:"#0d6b63",g2:"#10b981",glow:"16,185,129"},
+  blue:{name:"آبی",em:"#1e40af",g1:"#1e3a8a",g2:"#2563eb",glow:"37,99,235"},
+  pink:{name:"صورتی",em:"#9d174d",g1:"#831843",g2:"#db2777",glow:"219,39,119"},
+  purple:{name:"بنفش",em:"#5b21b6",g1:"#4c1d95",g2:"#7c3aed",glow:"124,58,237"},
+  cyan:{name:"فیروزه‌ای",em:"#0e7490",g1:"#155e75",g2:"#0891b2",glow:"8,145,178"}
+};
 function applyTheme(){
   document.body.classList.toggle("dark",DB.theme==="dark");
+  const P=PALS[DB.pal]||PALS.green,st=document.documentElement.style;
+  st.setProperty("--em",P.em);st.setProperty("--em2",P.g2);st.setProperty("--g1",P.g1);st.setProperty("--g2",P.g2);st.setProperty("--glow",P.glow);
+  const mt=document.querySelector('meta[name="theme-color"]');if(mt)mt.content=P.g1;
+  renderPal();
   const b=$("#themeBtn");
   if(b)b.textContent=(DB.theme==="dark")?"☀️":"🌙";
   drawDoughnut();drawBars();
+}
+function renderPal(){
+  const g=$("#palGrid");if(!g)return;
+  const cur=DB.pal||"green";
+  g.innerHTML=Object.keys(PALS).map(function(k){
+    const P=PALS[k];
+    return '<button class="pal-btn'+(k===cur?' on':'')+'" data-pal="'+k+'"><span class="pal-sw" style="background:linear-gradient(135deg,'+P.g1+','+P.g2+')"></span>'+P.name+(k===cur?' ✓':'')+'</button>';
+  }).join("");
+  g.querySelectorAll(".pal-btn").forEach(function(b){
+    b.onclick=function(){DB.pal=b.getAttribute("data-pal");saveDB();applyTheme();};
+  });
 }
 function toggleTheme(){DB.theme=(DB.theme==="dark")?"light":"dark";saveDB();applyTheme();}
 function shiftMonth(d){
@@ -1789,7 +1920,334 @@ function shiftMonth(d){
   cursor=[y,m];commit();renderAll();
 }
 function gotoToday(){cursor=jalaliToday().slice(0,2);commit();renderAll();setDateInput(jTodayStr());}
-const TAB_GROUP={"tab-goals":"tab-goals","tab-tx":"tab-tx","tab-acc":"tab-acc","tab-budget":"tab-budget","tab-chart":"tab-budget","tab-inst":"tab-inst","tab-inv":"tab-inst","tab-debt":"tab-inst","tab-backup":"tab-backup"};
+const TAB_GROUP={"tab-goals":"tab-goals","tab-tx":"tab-tx","tab-acc":"tab-acc","tab-budget":"tab-budget","tab-chart":"tab-budget","tab-inst":"tab-inst","tab-inv":"tab-inst","tab-debt":"tab-inst","tab-backup":"tab-backup","tab-lock":"tab-backup","tab-kh":"tab-goals","tab-zk":"tab-goals","tab-ch":"tab-goals","tab-nz":"tab-goals","tab-fin":"tab-fin","tab-look":"tab-backup","tab-rc":"tab-backup"};
+
+
+/* ------------------------- خمس و زکات ------------------------- */
+function relCfg(){
+  if(!DB.rel||typeof DB.rel!=="object")DB.rel={};
+  const r=DB.rel,t=jalaliToday();
+  if(!r.ys)r.ys=t[0]+"-01-01";
+  if(r.pct==null)r.pct=20;
+  if(r.gift==null)r.gift=1;
+  if(r.fam==null)r.fam=1;
+  if(r.gnis==null)r.gnis=69.12;
+  if(r.snis==null)r.snis=483.84;
+  if(r.zrate==null)r.zrate=2.5;
+  if(!r.zsel)r.zsel="fit";
+  if(r.mj==null)r.mj="";
+  if(!Array.isArray(r.nz))r.nz=[];
+  return r;
+}
+function toEn(s){return String(s||"").replace(/[۰-۹]/g,function(d){return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);}).replace(/٫|,/g,".");}
+function relPay(a,n,c){
+  DB.tx.push({id:"t"+Date.now()+"-"+Math.random().toString(36).slice(2,7),type:"expense",cat:c||"charity",amount:a,date:jTodayStr(),note:n,acc:"",tag:"",createdAt:new Date().toISOString()});
+  commit();renderAll();renderKh();renderZk();renderCh();renderNz();toast("ثبت شد ✅");
+}
+function relYearSum(cats){
+  const r=relCfg(),today=jTodayStr();let s=0;
+  DB.tx.forEach(function(t){if(t.date<r.ys||t.date>today||t.type==="income")return;if(cats.indexOf(t.cat)>=0)s+=+t.amount;});
+  return s;
+}
+function relRowSave(ids,fn){
+  ids.forEach(function(i){const el=$("#"+i);if(el)el.onchange=function(){fn();commit();renderKh();renderZk();renderCh();};});
+}
+/* خمس */
+function renderKh(){
+  const el=$("#khBody");if(!el)return;
+  const r=relCfg(),today=jTodayStr();
+  let inc=0,exp=0;const mm={};
+  DB.tx.forEach(function(t){
+    if(t.date<r.ys||t.date>today)return;
+    if(t.type==="income"){if(t.cat==="gift"&&!r.gift)return;inc+=+t.amount;}
+    else if(["charity","help","khums","zakat"].indexOf(t.cat)>=0)return;
+    else exp+=+t.amount;
+  });
+  DB.tx.forEach(function(t){
+    if(t.date<r.ys||t.date>today)return;
+    if(t.type==="income"&&t.cat==="gift"&&!r.gift)return;
+    if(t.type!=="income"&&["charity","help","khums","zakat"].indexOf(t.cat)>=0)return;
+    const m=t.date.slice(0,7);mm[m]=(mm[m]||0)+(t.type==="income"?1:-1)*(+t.amount);
+  });
+  const net=inc-exp;
+  let bal=0;DB.accounts.forEach(function(a){bal+=accBalance(a);});
+  let mSum=0;Object.keys(mm).forEach(function(m){if(mm[m]>0)mSum+=mm[m];});
+  const base=Math.max(0,Math.min(net,bal));
+  const khums1=Math.round(base*r.pct/100),khums2=Math.round(mSum*r.pct/100);
+  let k;
+  if(net<=0)k='خمس به‌نظر واجب نیست: از ابتدای سال خمسی درآمدتان از هزینه‌ها بیشتر نبوده.';
+  else if(bal<=0)k='احتمالاً خمس ندارید: مازاد دارید اما موجودی حساب‌ها صفر یا منفی است.';
+  else k='خمس تعلق می‌گیرد.';
+  const paid=relYearSum(["khums"]);
+  el.innerHTML='<h2>☪️ خمس</h2>'
+  +'<div class="row"><div><label>آغاز سال خمسی (مثال 1405-01-01)</label><input id="kYs" value="'+esc(r.ys)+'" inputmode="numeric"></div><div><label>درصد خمس</label><input id="kPct" value="'+r.pct+'" inputmode="decimal"></div></div>'
+  +'<label><input type="checkbox" id="kGift"'+(r.gift?' checked':'')+'> هدیه جزو درآمد حساب شود</label>'
+  +'<div class="hint">درآمد: '+money(inc)+' | هزینه: '+money(exp)+' | مازاد: '+money(net)+' | موجودی حساب‌ها: '+money(bal)+'</div>'
+  +'<p><b>'+k+'</b></p>'
+  +'<p><b>روش اول</b> (مازاد کل سال، محدود به موجودی): خمس ≈ <b>'+money(khums1)+'</b></p>'
+  +'<p><b>روش دوم</b> (حساب ماهانه، بدون جبران کسری ماه‌ها): مازاد ماه‌های مثبت '+money(mSum)+' ← خمس ≈ <b>'+money(khums2)+'</b></p>'
+  +'<p style="font-size:12px;opacity:.8">ارث و مهریه معمولاً خمس ندارند؛ بدهی و هزینهٔ سرمایه‌ای را خودتان لحاظ کنید.</p>'
+  +'<div class="hint">پرداخت‌شده در این سال: '+money(paid)+'</div>'
+  +'<div class="row"><button class="btn ghost" id="kPay1" type="button">ثبت پرداخت (روش اول)</button><button class="btn ghost" id="kPay2" type="button">ثبت پرداخت (روش دوم)</button></div>'
+  +'<div class="hint">پرداخت با همین دکمه به‌عنوان «خمس پرداختی» در تراکنش‌ها ثبت می‌شود.</div>';
+  relRowSave(["kYs","kPct","kGift"],function(){
+    r.ys=$("#kYs").value.trim()||r.ys;r.pct=+toEn($("#kPct").value)||20;r.gift=$("#kGift").checked?1:0;
+  });
+  $("#kPay1").onclick=function(){if(khums1>0)relPay(khums1,"پرداخت خمس","khums");else toast("مبلغی برای پرداخت نیست","error");};
+  $("#kPay2").onclick=function(){if(khums2>0)relPay(khums2,"پرداخت خمس","khums");else toast("مبلغی برای پرداخت نیست","error");};
+}
+/* نذر */
+function renderNz(){
+  const el=$("#nzBody");if(!el)return;
+  const r=relCfg();
+  const rows=r.nz.map(function(n,i){
+    return '<div class="row" style="align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0"><div style="'+(n.done?'opacity:.5;text-decoration:line-through':'')+'"><b>'+esc(n.t)+'</b>'+(n.a?' — '+money(n.a):'')+'<div class="hint">'+esc(n.d||"")+(n.done?' · ادا شد':'')+'</div></div><div>'
+    +(n.done?'':'<button class="btn sm" data-nz-pay="'+i+'" type="button">ادا کردم</button> ')
+    +'<button class="btn ghost sm" data-nz-del="'+i+'" type="button">حذف</button></div></div>';
+  }).join("");
+  el.innerHTML='<h2>🤍 نذر</h2>'
+  +'<div class="row"><div><label>شرح نذر</label><input id="nzT" placeholder="مثلاً: نذر امام حسین"></div><div><label>مبلغ (اختیاری، تومان)</label><input id="nzA" inputmode="numeric"></div></div>'
+  +'<div class="row"><div><label>تاریخ (اختیاری)</label><button type="button" class="btn ghost" id="nzDBtn" style="margin:0;width:100%">🗓️ <span id="nzDLabel">'+(nzDVal?jDateFa(nzDVal):"انتخاب تاریخ")+'</span></button><div id="nzCalPop" class="cal" hidden></div></div></div>'
+  +'<button class="btn" id="nzAdd" type="button">افزودن نذر</button>'
+  +'<div style="margin-top:10px">'+(rows||'<div class="hint">نذری ثبت نشده است.</div>')+'</div>';
+  $("#nzDBtn").onclick=function(){
+    const pop=$("#nzCalPop");if(!pop.hidden){pop.hidden=true;return;}
+    const b=nzDVal?canonicalDate(nzDVal).split("-").map(Number):jalaliToday();nzCalY=b[0];nzCalM=b[1];pop.hidden=false;renderNzCal();
+  };
+  $("#nzCalPop").onclick=function(e){
+    const t=e.target;
+    if(t.getAttribute("data-cm")){nzCalM+=+t.getAttribute("data-cm");if(nzCalM>12){nzCalM=1;nzCalY++;}if(nzCalM<1){nzCalM=12;nzCalY--;}renderNzCal();return;}
+    const k=t.getAttribute("data-day");
+    if(k){nzDVal=k;$("#nzDLabel").textContent=jDateFa(k);this.hidden=true;}
+  };
+  $("#nzAdd").onclick=function(){
+    const t=$("#nzT").value.trim();if(!t){toast("شرح نذر را وارد کنید.","error");return;}
+    r.nz.push({t:t,a:parseAmount($("#nzA").value)||0,d:nzDVal?canonicalDate(nzDVal):"",done:false});nzDVal="";commit();renderNz();
+  };
+  Array.prototype.forEach.call(el.querySelectorAll("[data-nz-del]"),function(b){b.onclick=function(){
+    if(!confirm("این نذر حذف شود؟"))return;r.nz.splice(+b.getAttribute("data-nz-del"),1);commit();renderNz();};});
+  Array.prototype.forEach.call(el.querySelectorAll("[data-nz-pay]"),function(b){b.onclick=function(){
+    const n=r.nz[+b.getAttribute("data-nz-pay")];n.done=true;
+    if(n.a>0){relPay(n.a,"نذر: "+n.t,"nazr");}else{commit();renderNz();toast("ادا شد ✅");}
+  };});
+}
+/* زکات */
+var ZK_ITEMS=[["fit","🍚 فطریه"],["gold","🥇 طلا و نقره مسکوک"],["grain","🌾 غلات و خرما و کشمش"],["animal","🐪 چهارپایان"],["jewel","💍 طلا و جواهر"]];
+function zkDetail(r,id,gold){
+  const f=function(lbl,k,v,ph){return '<div><label>'+lbl+'</label><input id="z_'+k+'" value="'+(v||"")+'" inputmode="decimal" placeholder="'+(ph||"")+'"></div>';};
+  if(id==="fit"){
+    const tot=(+r.fit||0)*(+r.fam||0);
+    return '<div class="row">'+f("تعداد افراد تحت تکفل","fam",r.fam,"1")+f("مبلغ هر نفر (تومان، از دفتر مرجع)","fit",r.fit,"")+'</div>'
+    +'<p>مقدار شرعی: حدود ۳ کیلو غذای رایج برای هر نفر. فطریه بر کسی واجب است که شب عید فطر خرج سالش را دارد.</p>'
+    +'<p>جمع فطریه: <b>'+money(tot)+'</b></p>'
+    +'<button class="btn" id="zPay" type="button"'+(tot>0?'':' disabled')+'>ثبت پرداخت فطریه</button>';
+  }
+  if(id==="gold"){
+    const mg=+r.mg||0,sv=+r.sv||0;
+    let res="";
+    res+= mg>=r.gnis?"طلای مسکوک به نصاب رسیده؛ زکات ≈ <b>"+toFaDigits((mg*r.zrate/100).toFixed(2))+"</b> گرم طلا. ":"طلای مسکوک به نصاب نرسیده. ";
+    res+= sv>=r.snis?"نقرهٔ مسکوک به نصاب رسیده؛ زکات ≈ <b>"+toFaDigits((sv*r.zrate/100).toFixed(2))+"</b> گرم نقره.":"نقرهٔ مسکوک به نصاب نرسیده.";
+    return '<div class="row">'+f("طلای مسکوک (گرم)","mg",r.mg,"0")+f("نقرهٔ مسکوک (گرم)","sv",r.sv,"0")+'</div>'
+    +'<div class="row">'+f("نصاب طلا (گرم)","gn",r.gnis,"")+f("نصاب نقره (گرم)","sn",r.snis,"")+f("نرخ زکات ٪","zr",r.zrate,"")+'</div>'
+    +'<p>'+res+'</p>'
+    +'<p style="font-size:12px;opacity:.8">شرط: مسکوک بودن و یک سال تمام ماندن در ملک.</p>'
+    +'<button class="btn" id="zPay" type="button" '+(((mg>=r.gnis)||(sv>=r.snis))?'':'disabled')+'>ثبت پرداخت زکات طلا/نقره (مبلغ را به تومان وارد کنید)</button>';
+  }
+  if(id==="grain"){
+    const gr=+r.gr||0;
+    const z=gr>=847?"به نصاب رسیده؛ زکات ≈ <b>"+toFaDigits((gr*(+r.ir||10)/100).toFixed(1))+"</b> کیلو.":(gr?"کمتر از نصاب (۸۴۷ کیلو) است؛ زکات ندارد.":"مقدار برداشت را وارد کنید.");
+    return '<div class="row">'+f("مقدار برداشت (کیلو)","gr",r.gr,"")+'<div><label>آبیاری</label><select id="z_ir"><option value="10"'+(r.ir==10?' selected':'')+'>بارانی ۱۰٪</option><option value="5"'+(r.ir==5?' selected':'')+'>چاه/پمپ ۵٪</option><option value="7.5"'+(r.ir==7.5?' selected':'')+'>ترکیبی ۷٫۵٪</option></select></div></div>'
+    +'<p>'+z+'</p>'
+    +'<p style="font-size:12px;opacity:.8">زکات بعد از کسر هزینه‌ها نیست مگر هزینهٔ بذر و کار طبق نظر مرجع.</p>';
+  }
+  if(id==="animal"){
+    const ca=+r.ca||0,cw=+r.cw||0,sh=+r.sh||0;const zp=[];
+    if(sh>=40)zp.push("گوسفند: "+(sh<121?"۱ رأس":sh<201?"۲ رأس":sh<301?"۳ رأس":"به‌ازای هر ۱۰۰ رأس ۱ رأس"));
+    if(cw>=30)zp.push("گاو: "+(cw<40?"۱ گوساله یک‌ساله (تبیع)":cw<60?"۱ گوساله دوساله (مسنّه)":"هر ۳۰ تا تبیع یا هر ۴۰ تا مسنّه"));
+    if(ca>=5)zp.push("شتر: "+(ca<10?"۱ گوسفند":ca<15?"۲ گوسفند":ca<20?"۳ گوسفند":ca<25?"۴ گوسفند":ca<26?"۵ گوسفند":"طبق جدول مرجع"));
+    return '<div class="row">'+f("شتر","ca",r.ca,"0")+f("گاو","cw",r.cw,"0")+f("گوسفند","sh",r.sh,"0")+'</div>'
+    +'<p>'+(zp.length?"زکات: "+zp.join("، "):"به نصاب نرسیده (شتر ۵، گاو ۳۰، گوسفند ۴۰) یا وارد نشده.")+'</p>'
+    +'<p style="font-size:12px;opacity:.8">شرط: یک سال تمام، چرا در علف‌زار طبیعی و غیرکارکن بودن.</p>';
+  }
+  if(id==="jewel"){
+    const jw=+r.jw||0,jz=jw>=r.gnis;
+    return '<p>زیور و جواهری که برای استفاده شخصی یا زینت باشد، زکات ندارد.</p>'
+    +'<div class="row">'+'<div><label>طلای زینتی برای فروش/سرمایه (گرم)</label><input id="z_jw" value="'+(r.jw||"")+'" inputmode="decimal" placeholder="0"></div>'+'</div>'
+    +'<p>'+(jw>0?(jz?"به نصاب رسیده؛ زکات ≈ <b>"+toFaDigits((jw*r.zrate/100).toFixed(2))+"</b> گرم طلا.":"کمتر از نصاب طلا است؛ زکات ندارد."):"فقط طلایی که برای فروش یا سرمایه نگه داشته‌اید را وارد کنید.")+'</p>'
+    +'<p style="font-size:12px;opacity:.8">نصاب همان نصاب طلای مسکوک است؛ با رساله مرجع خود چک کنید.</p>'
+    +'<p>طلای ثبت‌شده در دارایی‌ها: '+toFaDigits(gold)+' گرم (فقط برای اطلاع).</p>';
+  }
+  return "";
+}
+function renderZk(){
+  const el=$("#zkBody");if(!el)return;
+  const r=relCfg();
+  let gold=0;DB.assets.forEach(function(a){if(a.type==="gold")gold+=+a.qty||0;});
+  const chips=ZK_ITEMS.map(function(it){return '<button class="btn '+(r.zsel===it[0]?'':'ghost ')+'sm zk-chip" data-z="'+it[0]+'" type="button">'+it[1]+'</button>';}).join(" ");
+  el.innerHTML='<h2>🌾 زکات</h2>'
+  +'<div style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0">'+chips+'</div>'
+  +'<div id="zkDetail">'+zkDetail(r,r.zsel,gold)+'</div>'
+  +'<div class="hint">پرداخت زکات با دکمه همین صفحه به‌عنوان «زکات پرداختی» ثبت می‌شود. پرداخت‌شده در این سال: '+money(relYearSum(["zakat"]))+'</div>';
+  Array.prototype.forEach.call(el.querySelectorAll(".zk-chip"),function(b){b.onclick=function(){r.zsel=b.getAttribute("data-z");commit();renderZk();};});
+  const ids=["z_fam","z_fit","z_mg","z_sv","z_gn","z_sn","z_zr","z_gr","z_ir","z_ca","z_cw","z_sh","z_jw"];
+  ids.forEach(function(i){const x=$("#"+i);if(!x)return;x.onchange=function(){
+    r.fam=+toEn($("#z_fam")?$("#z_fam").value:r.fam)||0;
+    if($("#z_fit"))r.fit=parseAmount($("#z_fit").value)||0;
+    if($("#z_mg"))r.mg=+toEn($("#z_mg").value)||0;
+    if($("#z_sv"))r.sv=+toEn($("#z_sv").value)||0;
+    if($("#z_gn"))r.gnis=+toEn($("#z_gn").value)||69.12;
+    if($("#z_sn"))r.snis=+toEn($("#z_sn").value)||483.84;
+    if($("#z_zr"))r.zrate=+toEn($("#z_zr").value)||2.5;
+    if($("#z_gr"))r.gr=+toEn($("#z_gr").value)||0;
+    if($("#z_ir"))r.ir=+$("#z_ir").value;
+    if($("#z_ca"))r.ca=+toEn($("#z_ca").value)||0;
+    if($("#z_cw"))r.cw=+toEn($("#z_cw").value)||0;
+    if($("#z_sh"))r.sh=+toEn($("#z_sh").value)||0;
+    if($("#z_jw"))r.jw=+toEn($("#z_jw").value)||0;
+    commit();renderZk();
+  };});
+  const pz=$("#zPay");if(pz&&!pz.disabled)pz.onclick=function(){
+    let amt=0;
+    if(r.zsel==="fit")amt=(+r.fit||0)*(+r.fam||0);
+    else{const v=prompt("مبلغ زکات پرداختی (تومان):");amt=parseAmount(v||"")||0;}
+    if(amt>0)relPay(amt,"زکات "+(ZK_ITEMS.filter(function(x){return x[0]===r.zsel;})[0]||[0,""])[1].replace(/^\S+\s/,""),"zakat");
+    else toast("مبلغی برای پرداخت نیست","error");
+  };
+}
+/* صدقه */
+function renderCh(){
+  const el=$("#chBody");if(!el)return;
+  const sum=relYearSum(["charity","help"]);
+  el.innerHTML='<h2>🤲 صدقه و کمک به دیگران</h2>'
+  +'<div class="hint">مجموع صدقه و کمک از ابتدای سال خمسی: <b>'+money(sum)+'</b></div>'
+  +'<div class="row"><div><label>مبلغ (تومان)</label><input id="chA" inputmode="numeric"></div><div><label>توضیح</label><input id="chN" placeholder="صدقه، کمک به نیازمند..."></div></div>'
+  +'<div class="row"><button class="btn" id="chS" type="button">ثبت صدقه</button><button class="btn ghost" id="chH" type="button">ثبت کمک به دیگران</button></div>';
+  function go(c,d){const a=parseAmount($("#chA").value);if(!a||a<=0){toast("مبلغ معتبر وارد کنید.","error");return;}relPay(a,$("#chN").value.trim()||d,c);}
+  $("#chS").onclick=function(){go("charity","صدقه");};
+  $("#chH").onclick=function(){go("help","کمک به دیگران");};
+}
+/* ------------------------- شخصیت مالی ------------------------- */
+const FP_TYPES={
+ saver:{i:"🐜",n:"پس‌اندازگر محتاط",d:"امنیت مالی برایتان از لذت لحظه‌ای مهم‌تر است. معمولاً کم‌خرج و دورنگرید.",s:"انضباط، ذخیره‌ی اضطراری، پرهیز از بدهی.",tips:["بخشی از پس‌انداز را برای هدف مشخص (مثل هدف‌های همین برنامه) کنار بگذارید تا پول بی‌هدف نماند.","اگر تورم برایتان مهم است، درباره‌ی نگهداری ارزش پول در برابر تورم مطالعه کنید.","گاهی برای خودتان هم هزینه‌ی کوچک و برنامه‌ریزی‌شده در نظر بگیرید."]},
+ impulsive:{i:"🎈",n:"خرجکن لحظه‌ای",d:"از خرج‌کردن لذت می‌برید و تصمیم‌های مالی‌تان بیشتر احساسی است.",s:"سخاوت، لذت‌بردن از زندگی، انعطاف.",tips:["قاعده‌ی ۲۴ ساعت: برای خریدهای غیرضروری یک شبانه‌روز صبر کنید.","برای هر دسته‌ی پرخرج در تب بودجه سقف بگذارید.","درآمد که آمد، اول سهم پس‌انداز را جدا کنید و بعد خرج کنید."]},
+ investor:{i:"📈",n:"سرمایه‌گذار جسور",d:"به رشد پول فکر می‌کنید و ریسک را می‌پذیرید.",s:"نگاه بلندمدت، آشنایی با فرصت‌ها، جسارت.",tips:["پیش از سرمایه‌گذاری، ذخیره‌ی اضطراری چندماهه کنار بگذارید.","سرمایه را روی چند نوع دارایی پخش کنید و همه را روی یک گزینه نگذارید.","فقط پولی را وارد ریسک کنید که از دست رفتنش زندگی‌تان را مختل نمی‌کند."]},
+ planner:{i:"🧮",n:"برنامه‌ریز منظم",d:"بودجه و هدف دارید و تصمیم‌های مالی‌تان حساب‌شده است.",s:"نظم، پیگیری، هدف‌گذاری.",tips:["بودجه‌ها را هر فصل مرور و با واقعیت هماهنگ کنید.","برای اهداف بلندمدت هم برنامه‌ی ماهانه بسازید.","مراقب وسواس بیش‌ازحد نباشید؛ کمی انعطاف برای هزینه‌های پیش‌بینی‌نشده بگذارید."]},
+ careless:{i:"🌀",n:"بی‌خیال یا بی‌نظم",d:"کمتر مالی‌تان را دنبال می‌کنید و تصویر روشنی از خرج و درآمد ندارید.",s:"آرامش ذهنی، ذهن آزاد از نگرانی.",tips:["فقط یک کار: هر روز یا هر چند روز تراکنش‌ها را ثبت کنید. همین شروع کافی است.","یک بودجه‌ی ساده برای فقط ۲ یا ۳ دسته‌ی پرخرج بسازید.","یادآور اقساط و بدهی‌ها را فعال نگه دارید تا چیزی از قلم نیفتد."]},
+ balanced:{i:"⚖️",n:"متعادل",d:"نه افراطی خرج می‌کنید نه افراطی پس‌انداز؛ رفتار مالی‌تان میانه است.",s:"تعادل، انعطاف، ثبات.",tips:["یک هدف مالی مشخص انتخاب کنید تا تعادل به پیشرفت تبدیل شود.","درصد ثابتی از هر درآمد را خودکار کنار بگذارید.","هر چند ماه یک بار نسبت‌هایتان را در همین صفحه مقایسه کنید."]}
+};
+const FP_Q=[
+ ["درآمد غیرمنتظره‌ای گرفتید. اولین کارتان؟",[["saver","بیشترش را پس‌انداز می‌کنم"],["impulsive","به خودم یا اطرافیان هدیه می‌دهم"],["investor","سرمایه‌گذاری می‌کنم"],["planner","طبق بودجه بین هدف‌ها تقسیمش می‌کنم"],["careless","نمی‌دانم، خرج می‌شود می‌رود"]]],
+ ["آخر ماه معمولاً وضع حسابتان چطور است؟",[["saver","همیشه چیزی باقی می‌ماند"],["impulsive","معمولاً تمام می‌شود"],["planner","تقریباً همان‌قدر که برنامه داشتم"],["careless","اصلاً نمی‌دانم چقدر مانده"],["balanced","گاهی مانده، گاهی نه"]]],
+ ["درباره‌ی بودجه‌بندی چه فکر می‌کنید؟",[["planner","ضروری است و دارم"],["saver","فقط سقف خرج برایم مهم است"],["impulsive","محدودکننده است"],["careless","وقتش را ندارم"],["balanced","گاهی انجامش می‌دهم"]]],
+ ["یک خرید بزرگ مثل موبایل را چطور تصمیم می‌گیرید؟",[["saver","پول جمع می‌کنم و نقد می‌خرم"],["impulsive","اگر بخواهمش، با قسط هم می‌خرم"],["planner","مقایسه و برنامه‌ی زمانی دارم"],["investor","می‌سنجم که بازده پولم جای دیگر بیشتر نیست"],["careless","هر وقت خراب شد"]]],
+ ["نگرش‌تان به ریسک مالی؟",[["investor","ریسک برای رشد لازم است"],["saver","ترجیح می‌دهم امن باشد"],["balanced","بخشی ریسک، بخشی امن"],["impulsive","ریسک هیجان‌انگیز است"],["careless","فکرش را نکرده‌ام"]]],
+ ["قسط یا بدهی دارید؟ نگاهتان به آن؟",[["saver","تا جای ممکن پرهیز می‌کنم"],["planner","حساب‌شده و کنترل‌شده است"],["impulsive","برای خرید مورد علاقه اشکالی ندارد"],["investor","اگر بازدهش بیشتر باشد خوب است"],["careless","تاریخ‌ها را گاهی فراموش می‌کنم"]]],
+ ["پول برای شما بیشتر چیست؟",[["saver","امنیت"],["impulsive","لذت و تجربه"],["investor","ابزار رشد"],["planner","ابزار رسیدن به هدف"],["balanced","ترکیبی از همه"]]],
+ ["اگر یک ماه درآمدتان قطع شود؟",[["saver","چند ماه ذخیره دارم"],["planner","برنامه‌ی جایگزین دارم"],["impulsive","سخت می‌شود"],["investor","از دارایی‌هایم استفاده می‌کنم"],["careless","نگران نیستم، پیش می‌آید"]]]
+];
+function fpCalc(){
+  const t=jalaliToday();let y=t[0],m=t[1];const months=[];
+  for(let k=0;k<3;k++){months.push(y+"-"+pad2(m));m--;if(m<1){m=12;y--;}}
+  const per={};months.forEach(function(p){per[p]={inc:0,exp:0,n:0,cat:{}};});
+  const days={};let n=0;
+  DB.tx.forEach(function(x){const d=canonicalDate(x.date);if(!d)return;const p=d.slice(0,7);const o=per[p];if(!o)return;
+    n++;o.n++;days[d]=1;
+    if(x.type==="income")o.inc+=+x.amount;else{o.exp+=+x.amount;o.cat[x.cat]=(o.cat[x.cat]||0)+(+x.amount);}});
+  let inc=0,exp=0,withData=0,pos=0;
+  months.forEach(function(p){const o=per[p];inc+=o.inc;exp+=o.exp;if(o.n){withData++;if(o.inc>=o.exp&&o.inc>0)pos++;}});
+  if(n<8||inc<=0||!withData)return {ok:false,n:n};
+  const rate=(inc-exp)/inc;
+  let ok=0,tot=0;
+  months.forEach(function(p){const o=per[p];if(!o.n)return;Object.keys(DB.budget||{}).forEach(function(c){const b=+DB.budget[c]||0;if(b>0){tot++;if((o.cat[c]||0)<=b)ok++;}});});
+  const adh=tot?ok/tot:null;
+  const avgInc=inc/withData;
+  let instM=0;const cy=t[0],cm=t[1];
+  DB.inst.forEach(function(i){if(!i.other&&instCountInMonth(i,cy,cm))instM+=+i.amount||0;});
+  let owe=0;DB.debts.forEach(function(d){if(d.type==="money"&&d.dir==="owe")owe+=+d.qty||0;});
+  const ratio=instM/avgInc;
+  const clamp=function(v,a,b){return Math.max(a,Math.min(b,v));};
+  const pSave=clamp(rate/0.2,0,1)*35;
+  const pBud=adh===null?12:adh*25;
+  let pDebt=ratio<=0.2?20:ratio>=0.5?0:20*(0.5-ratio)/0.3;
+  pDebt=Math.max(0,pDebt-Math.min(5,owe/avgInc*2));
+  const pCons=clamp(Object.keys(days).length/12,0,1)*10;
+  const pPos=(pos/withData)*10;
+  const score=Math.round(pSave+pBud+pDebt+pCons+pPos);
+  let dt="balanced";
+  if(rate<0)dt="impulsive";
+  else if(Object.keys(days).length<5)dt="careless";
+  else if(adh!==null&&adh>=0.8&&rate>=0.1)dt="planner";
+  else if(rate>=0.25)dt="saver";
+  else if(DB.assets.length&&rate>=0.1)dt="investor";
+  return {ok:true,score:score,dt:dt,rate:rate,adh:adh,ratio:ratio,owe:owe,
+    rows:[["نرخ پس‌انداز",Math.round(pSave),35,rate>=0.2?"عالی است.":rate>=0.1?"قابل قبول؛ هدف ۲۰٪ درآمد است.":rate>=0?"پایین است؛ سعی کنید ماهانه بخشی کنار بگذارید.":"هزینه‌هایتان از درآمد بیشتر بوده است."],
+     ["پایبندی به بودجه",Math.round(pBud),25,adh===null?"بودجه‌ای تعیین نکرده‌اید؛ برای دسته‌های پرخرج سقف بگذارید.":adh>=0.8?"بسیار خوب.":"در چند دسته از بودجه عبور کرده‌اید."],
+     ["بار اقساط و بدهی",Math.round(pDebt),20,ratio<=0.2&&!owe?"سبک است.":ratio>0.3?"اقساط سهم زیادی از درآمد را می‌گیرد.":"قابل مدیریت است."],
+     ["نظم در ثبت",Math.round(pCons),10,Object.keys(days).length>=12?"منظم هستید.":"منظم‌تر ثبت کنید تا تحلیل دقیق‌تر شود."],
+     ["ماه‌های مثبت",Math.round(pPos),10,pos===withData?"همه‌ی ماه‌ها مثبت بوده‌اند.":"در برخی ماه‌ها خرج بیشتر از درآمد بوده است."]]};
+}
+function fpQuizType(a){
+  const c={};a.forEach(function(k){if(k)c[k]=(c[k]||0)+1;});
+  let best="balanced",bv=0,tie=false;
+  Object.keys(c).forEach(function(k){if(c[k]>bv){bv=c[k];best=k;tie=false;}else if(c[k]===bv)tie=true;});
+  return tie&&bv<3?"balanced":best;
+}
+let fpAns=[];
+function fpBar(v,mx){return '<div style="height:8px;border-radius:6px;background:var(--line);overflow:hidden;margin:4px 0"><div style="height:100%;width:'+Math.round(v/mx*100)+'%;background:var(--em)"></div></div>';}
+function renderFP(){
+  const el=document.getElementById("fpBody");if(!el)return;
+  if(!DB.fp)DB.fp={hist:[],qtype:"",ans:[]};
+  const r=fpCalc();let h="";
+  h+='<div class="panel"><h2>🧠 شخصیت مالی</h2><div class="hint">این صفحه یک برداشت تقریبی از رفتار مالی شماست، نه توصیه‌ی مالی یا سرمایه‌گذاری.</div></div>';
+  h+='<div class="panel"><h2>📊 عملکرد (۳ ماه اخیر)</h2>';
+  if(!r.ok){h+='<div class="hint">داده‌ی کافی نیست. حداقل ۸ تراکنش همراه با ثبت درآمد در سه ماه اخیر لازم است. (الان '+toFaDigits(r.n)+' تراکنش)</div></div>';}
+  else{
+    const g=r.score>=80?"عالی 🌟":r.score>=60?"خوب 👍":r.score>=40?"متوسط 🙂":"نیازمند توجه ⚠️";
+    h+='<div style="font-size:34px;font-weight:800;text-align:center">'+toFaDigits(r.score)+'<span style="font-size:14px"> از ۱۰۰</span></div><div style="text-align:center;margin-bottom:8px">'+g+'</div>';
+    r.rows.forEach(function(x){h+='<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><b>'+x[0]+'</b><span>'+toFaDigits(x[1])+' / '+toFaDigits(x[2])+'</span></div>'+fpBar(x[1],x[2])+'<div class="hint">'+x[3]+'</div></div>';});
+    h+='<button class="btn gold" id="fpSave">💾 ذخیره‌ی نتیجه‌ی این ماه</button></div>';
+  }
+  h+='<div class="panel"><h2>📝 پرسشنامه</h2>';
+  if(DB.fp.qtype&&!fpAns.length){
+    const T=FP_TYPES[DB.fp.qtype];
+    h+='<div class="hint">نتیجه‌ی آخر پرسشنامه‌ی شما:</div><div style="font-size:18px;font-weight:700">'+T.i+' '+T.n+'</div><button class="btn ghost sm" id="fpRetake">🔄 پاسخ دوباره</button></div>';
+  }else{
+    FP_Q.forEach(function(q,qi){
+      h+='<div style="margin:10px 0"><b style="font-size:13px">'+toFaDigits(qi+1)+'. '+q[0]+'</b>';
+      q[1].forEach(function(o,oi){h+='<label style="display:flex;gap:6px;align-items:center;font-size:13px;margin:4px 0"><input type="radio" name="fq'+qi+'" data-q="'+qi+'" data-t="'+o[0]+'"'+(fpAns[qi]===o[0]?" checked":"")+' style="width:auto"> '+o[1]+'</label>';});
+      h+='</div>';});
+    h+='<button class="btn gold" id="fpDone">✅ مشاهده‌ی نتیجه</button></div>';
+  }
+  const qt=DB.fp.qtype,dt=r.ok?r.dt:"";
+  const main=qt||dt;
+  if(main){
+    const T=FP_TYPES[main];
+    h+='<div class="panel"><h2>'+T.i+' '+T.n+'</h2><div>'+T.d+'</div><div class="hint">نقاط قوت: '+T.s+'</div>';
+    if(qt&&dt&&qt!==dt){const D=FP_TYPES[dt];h+='<div class="hint" style="margin-top:6px">⚠️ پاسخ‌هایتان با رفتار واقعی‌تان یکی نیست: داده‌ها بیشتر شبیه «'+D.i+' '+D.n+'» هستند. به رفتار واقعی بیشتر اعتماد کنید.</div>';}
+    else if(!qt&&dt)h+='<div class="hint">این تیپ فقط از روی داده‌ها برآورد شده؛ پرسشنامه را هم پر کنید.</div>';
+    h+='<b style="display:block;margin-top:8px">راهکارها:</b><ul style="padding-right:18px;margin:4px 0;font-size:13px;line-height:1.9">';
+    T.tips.forEach(function(x){h+='<li>'+x+'</li>';});
+    h+='</ul><div class="hint">برای بالا بردن سواد مالی، با مطالعه‌ی کتاب‌ها و منابع معتبر آموزش مالی شخصی پیش بروید و هر منبع را با دید انتقادی بخوانید.</div></div>';
+  }
+  const hist=DB.fp.hist||[];
+  if(hist.length){
+    h+='<div class="panel"><h2>📈 روند ماهانه</h2>';
+    hist.slice(-6).reverse().forEach(function(x,i,a){const prev=a[i+1];const df=prev?x.score-prev.score:null;
+      h+='<div style="display:flex;justify-content:space-between;font-size:13px;margin:4px 0"><span>'+toFaDigits(x.ym)+'</span><span>'+toFaDigits(x.score)+(df===null?"":df>0?" 🔺"+toFaDigits(df):df<0?" 🔻"+toFaDigits(-df):" ▪️")+'</span></div>';});
+    h+='</div>';
+  }
+  el.innerHTML=h;
+  el.querySelectorAll("input[type=radio]").forEach(function(x){x.onchange=function(){fpAns[+x.getAttribute("data-q")]=x.getAttribute("data-t");};});
+  const sv=document.getElementById("fpSave");if(sv)sv.onclick=function(){
+    const ym=ymNow();DB.fp.hist=(DB.fp.hist||[]).filter(function(x){return x.ym!==ym;});
+    DB.fp.hist.push({ym:ym,score:r.score,type:r.dt});DB.fp.hist.sort(function(a,b){return a.ym<b.ym?-1:1;});
+    commit();renderFP();toast("ذخیره شد");};
+  const dn=document.getElementById("fpDone");if(dn)dn.onclick=function(){
+    let c=0;for(let i=0;i<FP_Q.length;i++)if(fpAns[i])c++;
+    if(c<FP_Q.length){toast("به همه‌ی سوال‌ها پاسخ بدهید");return;}
+    DB.fp.qtype=fpQuizType(fpAns);DB.fp.ans=fpAns.slice();fpAns=[];commit();renderFP();};
+  const rt=document.getElementById("fpRetake");if(rt)rt.onclick=function(){fpAns=[];DB.fp.qtype="";renderFP();};
+}
 function openSheet(){const s=$("#sheet"),b=$("#sheetBg");if(s)s.classList.add("open");if(b)b.classList.add("open");}
 function closeSheet(){const s=$("#sheet"),b=$("#sheetBg");if(s)s.classList.remove("open");if(b)b.classList.remove("open");}
 function switchTab(id){
@@ -1799,11 +2257,24 @@ function switchTab(id){
   const btns=document.querySelectorAll(".nav-btn");
   for(let i=0;i<btns.length;i++)btns[i].classList.toggle("active",btns[i].getAttribute("data-tab")===grp);
   const subs=document.querySelectorAll(".sub-btn");
-  for(let i=0;i<subs.length;i++)subs[i].classList.toggle("active",subs[i].getAttribute("data-tab")===id);
+  const khSub=["tab-kh","tab-zk","tab-ch","tab-nz"].indexOf(id)>=0;
+  for(let i=0;i<subs.length;i++){
+    const b=subs[i],dt=b.getAttribute("data-tab");
+    let on=dt===id;
+    // دکمه «خیرات» در نوار بالا (کنار «اهداف») وقتی هر زیرتب خیرات باز است فعال شود
+    if(dt==="tab-kh"&&khSub&&b.parentElement&&b.parentElement.querySelector('[data-tab="tab-goals"]'))on=true;
+    b.classList.toggle("active",on);
+  }
   const fab=$("#fab");if(fab)fab.style.display=(id==="tab-tx")?"flex":"none";
   if(id!=="tab-tx")closeSheet();
   if(id==="tab-chart"){drawDoughnut();drawBars();}
   if(id==="tab-backup")renderBackupInfo();
+  if(id==="tab-fin")renderFP();
+  if(id==="tab-kh")renderKh();
+  if(id==="tab-zk")renderZk();
+  if(id==="tab-ch")renderCh();
+  if(id==="tab-nz")renderNz();
+  if(id==="tab-look")renderPal();
   window.scrollTo(0,0);
 }
 
@@ -1858,7 +2329,7 @@ function fillCatSelect(){
   const t=$("#fType").value, sel=$("#fCat");
   if(!sel)return;
   const keep=sel.value;
-  sel.innerHTML=CATS[t].map(function(c){return '<option value="'+c.id+'">'+c.icon+' '+c.name+'</option>';}).join("");
+  sel.innerHTML=CATS[t].filter(function(c){return !c.hid;}).map(function(c){return '<option value="'+c.id+'">'+c.icon+' '+c.name+'</option>';}).join("");
   if(keep&&CATS[t].some(function(c){return c.id===keep;}))sel.value=keep;
 }
 function setEditMode(id){
@@ -1866,6 +2337,7 @@ function setEditMode(id){
   const btn=$("#addBtn"), cancel=$("#cancelEditBtn");
   if(btn)btn.textContent=editId?"💾 ذخیره تغییرات":"ثبت تراکنش";
   if(cancel)cancel.style.display=editId?"":"none";
+  const rr=$("#fRecRow");if(rr)rr.style.display=editId?"none":"";
 }
 function startEdit(id){
   const t=DB.tx.find(function(x){return x.id===id;});
@@ -1876,6 +2348,7 @@ function startEdit(id){
   $("#fAmount").value=toFaMoney(t.amount);
   $("#fNote").value=t.note||"";
   $("#fAcc").value=accExists(t.acc)?t.acc:"";
+  $("#fTag").value=t.tag||"";
   setDateInput(t.date);
   setEditMode(id);
   switchTab("tab-tx");
@@ -1901,19 +2374,21 @@ function addTx(){
   if(editId){
     const t=DB.tx.find(function(x){return x.id===editId;});
     if(!t){setEditMode(null);return;}
-    t.type=type;t.cat=cat;t.amount=amount;t.date=date;t.note=note;t.acc=acc;
-    commit();renderAll();
+    t.type=type;t.cat=cat;t.amount=amount;t.date=date;t.note=note;t.acc=acc;t.tag=$("#fTag").value;
+    commit();if($("#fReceipt").files.length)saveReceipt(t.id);renderAll();
     toast("تراکنش ویرایش شد ✅");
     setEditMode(null);
     closeSheet();
   }else{
     DB.tx.push({
       id:"t"+Date.now()+"-"+Math.random().toString(36).slice(2,7),
-      type:type,cat:cat,amount:amount,date:date,note:note,acc:acc,
+      type:type,cat:cat,amount:amount,date:date,note:note,acc:acc,tag:$("#fTag").value,
       createdAt:new Date().toISOString()
     });
     /* مهم: ذخیره‌ی فوری و بی‌درنگ (بدون تأخیر) تا هرگز از دست نرود */
-    commit();
+    const nt=DB.tx[DB.tx.length-1];
+    if($("#fRec").checked){if(!Array.isArray(DB.rec))DB.rec=[];const rid="r"+Date.now();DB.rec.push({id:rid,type:type,cat:cat,amount:amount,acc:acc,note:note,tag:nt.tag,day:+date.slice(8,10),last:date.slice(0,7)});nt.rid=rid;$("#fRec").checked=false;}
+    commit();if($("#fReceipt").files.length)saveReceipt(nt.id);
     closeSheet();cursor=[+date.slice(0,4),+date.slice(5,7)];   /* به ماهِ تراکنش می‌رویم تا کاربر ببیندش */
     renderAll();
     toast("تراکنش ثبت و ذخیره شد ✅ "+money(amount)+" — "+jDateFa(date));
@@ -1928,6 +2403,7 @@ async function delTx(id){
   if(!t)return;
   if(!(await cConfirm("این تراکنش حذف شود؟\n"+catInfo(t.type,t.cat).name+" — "+money(t.amount)+" — "+jDateFa(t.date),true)))return;
   DB.tx=DB.tx.filter(function(x){return x.id!==id;});
+  rcDel(id);
   commit();renderAll();
   toast("تراکنش حذف شد");
 }
@@ -2080,6 +2556,7 @@ function bindEvents(){
   const prev=$("#prevMonth");if(prev)prev.onclick=function(){shiftMonth(-1);};
   const next=$("#nextMonth");if(next)next.onclick=function(){shiftMonth(1);};
   const today=$("#todayBtn");if(today)today.onclick=gotoToday;
+  const setB=$("#setBtn");if(setB)setB.onclick=function(){switchTab("tab-backup");};
   const tb=$("#themeBtn");if(tb)tb.onclick=toggleTheme;
   const ft=$("#fType");if(ft)ft.onchange=fillCatSelect;
   const add=$("#addBtn");if(add)add.onclick=addTx;
@@ -2089,7 +2566,12 @@ function bindEvents(){
   const aa=$("#addAccBtn");if(aa)aa.onclick=addAccount;
   const tb2=$("#transferBtn");if(tb2)tb2.onclick=doTransfer;
   const ai=$("#addInstBtn");if(ai)ai.onclick=addInst;
-  ["#aBal","#tAmount","#iAmount","#iLeft"].forEach(function(s){
+    document.addEventListener("input",function(ev){
+    const el=ev.target;if(!el||!el.id)return;
+    if(["chA","nzA","z_fit"].indexOf(el.id)<0)return;
+    const c=toEnDigits(el.value);const f=c?toFaMoney(c):"";if(f!==el.value)el.value=f;
+  });
+  ["#aBal","#tAmount","#iAmount","#iLeft","#txMin","#txMax","#vBuy","#vCur","#fAmount"].forEach(function(s){
     const el=$(s);if(!el)return;
     el.oninput=function(){const c=toEnDigits(el.value);const f=c?toFaMoney(c):"";if(f!==el.value)el.value=f;};
   });
@@ -2110,6 +2592,9 @@ function bindEvents(){
   if(ia)ia.onclick=function(){switchTab("tab-inst");};
   const demo=$("#demoBtn");if(demo)demo.onclick=loadDemo;
   const reset=$("#resetBtn");if(reset)reset.onclick=resetAll;
+  const ra=$("#rcAllBtn");if(ra)ra.onclick=rcAll;
+  const ro=$("#rcOrphanBtn");if(ro)ro.onclick=rcOrphans;
+  renderRcMgr();
   const fa=$("#fAmount");
   if(fa){
     fa.oninput=function(){
@@ -2472,6 +2957,238 @@ function renderHealth(){
 }
 (function(){const _ra=renderAll;renderAll=function(){_ra();renderHealth();};})();
 
+/* ---------- برچسب، رسید، تکرار، گزارش سالانه ---------- */
+const TAGS=[{id:"",n:"بدون برچسب",c:""},{id:"must",n:"ضروری",c:"#dc2626"},{id:"fun",n:"تفریحی",c:"#a855f7"},{id:"invest",n:"سرمایه‌ای",c:"#2563eb"},{id:"debt",n:"تعهد / قرض",c:"#ea580c"},{id:"help",n:"کمک / هدیه",c:"#16a34a"}];
+function tagInfo(id){return TAGS.find(function(x){return x.id===(id||"");})||TAGS[0];}
+function fillTagSelect(){const s=$("#fTag");if(!s)return;s.innerHTML=TAGS.map(function(t){return '<option value="'+t.id+'">'+(t.c?"● ":"")+t.n+'</option>';}).join("");}
+
+/* ذخیره‌ی عکس رسید در IndexedDB (بیرون از JSON پشتیبان) */
+function rcDb(){return new Promise(function(res,rej){const r=indexedDB.open("hesabban_rc",1);r.onupgradeneeded=function(){r.result.createObjectStore("rc");};r.onsuccess=function(){res(r.result);};r.onerror=function(){rej(r.error);};});}
+async function rcOp(mode,fn){const db=await rcDb();return new Promise(function(res,rej){const tx=db.transaction("rc",mode);const st=tx.objectStore("rc");const req=fn(st);tx.oncomplete=function(){res(req?req.result:undefined);};tx.onerror=function(){rej(tx.error);};});}
+let RC_SET=new Set();
+const RC_LS="hesabban_rc:";
+/* اگر IndexedDB در این محیط مسدود بود، عکس به‌صورت dataURL در localStorage ذخیره می‌شود */
+function blobToDataURL(b){return new Promise(function(res,rej){const r=new FileReader();r.onload=function(){res(r.result);};r.onerror=function(){rej(r.error);};r.readAsDataURL(b);});}
+function rcLsKeys(){const out=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.indexOf(RC_LS)===0)out.push(k.slice(RC_LS.length));}}catch(e){}return out;}
+async function rcPut(id,blob){
+  try{return await rcOp("readwrite",function(st){return st.put(blob,id);});}
+  catch(e){const d=await blobToDataURL(blob);if(!store.set(RC_LS+id,d))throw new Error("فضای ذخیره‌سازی پر است");return;}
+}
+async function rcGet(id){
+  try{return await rcOp("readonly",function(st){return st.get(id);});}
+  catch(e){const d=store.get(RC_LS+id);return d||undefined;}
+}
+function rcDel(id){
+  rcOp("readwrite",function(st){return st.delete(id);}).catch(function(){});
+  store.del(RC_LS+id);RC_SET.delete(id);
+}
+function refreshRcSet(){
+  return rcOp("readonly",function(st){return st.getAllKeys();}).then(function(keys){RC_SET=new Set(keys||[]);})
+    .catch(function(){RC_SET=new Set(rcLsKeys());}).then(function(){renderTxList();});
+}
+function compressImg(file){return new Promise(function(res,rej){const url=URL.createObjectURL(file);const im=new Image();im.onload=function(){const k=Math.min(1,1024/Math.max(im.width,im.height));const cv=document.createElement("canvas");cv.width=Math.round(im.width*k);cv.height=Math.round(im.height*k);cv.getContext("2d").drawImage(im,0,0,cv.width,cv.height);URL.revokeObjectURL(url);cv.toBlob(function(b){b?res(b):rej(new Error("blob"));},"image/jpeg",0.7);};im.onerror=function(){rej(new Error("img"));};im.src=url;});}
+function saveReceipt(id){const f=$("#fReceipt");if(!f||!f.files||!f.files[0])return;const file=f.files[0];f.value="";compressImg(file).catch(function(){return file;}).then(function(b){return rcPut(id,b);}).then(function(){RC_SET.add(id);const t=DB.tx.find(function(x){return x.id===id;});if(t){t.rc=1;commit();}renderTxList();renderRcMgr();toast("عکس رسید ذخیره شد 📎");}).catch(function(e){toast("ذخیره عکس انجام نشد: "+(e&&e.message||e),"error");});}
+/* مدیریت عکس‌های رسید: فهرست، نمایش، حذف */
+async function rcEntries(){
+  const ids=new Set(RC_SET);rcLsKeys().forEach(function(k){ids.add(k);});
+  const size={};
+  try{
+    const db=await rcDb();
+    await new Promise(function(res,rej){const tx=db.transaction("rc","readonly");const req=tx.objectStore("rc").openCursor();
+      req.onsuccess=function(){const c=req.result;if(c){size[c.key]=(c.value&&c.value.size)||0;c.continue();}};
+      tx.oncomplete=res;tx.onerror=function(){rej(tx.error);};});
+  }catch(e){}
+  rcLsKeys().forEach(function(k){if(!(k in size))size[k]=(store.get(RC_LS+k)||"").length;});
+  return Array.from(ids).map(function(id){return {id:id,size:size[id]||0};});
+}
+async function renderRcMgr(){
+  const el=$("#rcMgrInfo"),box=$("#rcList");if(!box)return;
+  const list=await rcEntries();
+  const total=list.reduce(function(a,b){return a+b.size;},0);
+  if(el)el.textContent="تعداد: "+toFaDigits(list.length)+" عکس — حجم: "+toFaDigits((total/1048576).toFixed(1))+" مگابایت";
+  const groups={};
+  list.forEach(function(x){
+    const t=DB.tx.find(function(y){return y.id===x.id;});
+    const key=t?(t.type+"|"+t.cat):"__none";
+    if(!groups[key])groups[key]={name:t?catInfo(t.type,t.cat).icon+" "+catInfo(t.type,t.cat).name:"⚠️ بدون تراکنش",items:[],size:0};
+    groups[key].items.push({x:x,t:t});groups[key].size+=x.size;
+  });
+  const keys=Object.keys(groups).sort(function(a,b){return groups[b].items.length-groups[a].items.length;});
+  box.innerHTML="";
+  if(!keys.length){box.innerHTML='<div class="hint">عکسی ذخیره نشده است.</div>';return;}
+  keys.forEach(function(k){
+    const g=groups[k];
+    const d=document.createElement("details");
+    d.style.cssText="border-bottom:1px solid rgba(0,0,0,.08);padding:4px 0";
+    const sm=document.createElement("summary");
+    sm.style.cssText="cursor:pointer;font-size:14px;padding:6px 0";
+    sm.textContent=g.name+" — "+toFaDigits(g.items.length)+" عکس ("+toFaDigits((g.size/1024).toFixed(0))+" کیلوبایت)";
+    d.appendChild(sm);
+    g.items.forEach(function(it){
+      const row=document.createElement("div");
+      row.style.cssText="display:flex;align-items:center;gap:6px;padding:4px 0 4px 8px;font-size:12px;flex-wrap:nowrap";
+      const info=it.t?jDateFa(it.t.date)+" — "+money(it.t.amount)+(it.t.note?" — "+esc(it.t.note):""):"تراکنش حذف‌شده";
+      const span=document.createElement("div");span.style.cssText="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis";span.innerHTML=info;
+      const bv=document.createElement("button");bv.className="btn ghost sm";bv.textContent="👁";bv.style.cssText="width:auto;flex:none;padding:2px 8px;margin:0";
+      bv.onclick=function(){showReceipt(it.x.id);};
+      const bd=document.createElement("button");bd.className="btn ghost sm";bd.textContent="🗑";bd.style.cssText="width:auto;flex:none;padding:2px 8px;margin:0";
+      bd.onclick=async function(){
+        if(!(await cConfirm("عکس این رسید حذف شود؟ (تراکنش باقی می‌ماند)",true)))return;
+        rcDel(it.x.id);
+        const tt=DB.tx.find(function(y){return y.id===it.x.id;});if(tt){delete tt.rc;commit();}
+        setTimeout(function(){refreshRcSet().then(renderRcMgr);},300);
+      };
+      row.appendChild(span);row.appendChild(bv);row.appendChild(bd);d.appendChild(row);
+    });
+    box.appendChild(d);
+  });
+}
+async function rcOrphans(){
+  const list=await rcEntries();
+  const dead=list.filter(function(x){return !DB.tx.find(function(y){return y.id===x.id;});});
+  if(!dead.length){toast("عکس بدون تراکنشی پیدا نشد ✅");return;}
+  if(!(await cConfirm(toFaDigits(dead.length)+" عکس بدون تراکنش حذف شود؟",true)))return;
+  dead.forEach(function(x){rcDel(x.id);});
+  setTimeout(function(){refreshRcSet().then(renderRcMgr);},300);
+  toast("حذف شد");
+}
+async function rcAll(){
+  if(!(await cConfirm("همه‌ی عکس‌های رسید حذف شوند؟ (تراکنش‌ها باقی می‌مانند)",true)))return;
+  const list=await rcEntries();
+  list.forEach(function(x){rcDel(x.id);});
+  DB.tx.forEach(function(t){delete t.rc;});commit();
+  setTimeout(function(){refreshRcSet().then(renderRcMgr);},300);
+  toast("همه‌ی عکس‌ها حذف شدند");
+}
+function showReceipt(id){rcGet(id).then(function(b){if(!b){toast("عکسی برای این تراکنش نیست.","error");return;}const ov=document.createElement("div");ov.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;display:flex;align-items:center;justify-content:center;padding:12px";const im=new Image();const isStr=typeof b==="string";im.src=isStr?b:URL.createObjectURL(b);im.style.cssText="max-width:100%;max-height:100%;border-radius:8px";ov.appendChild(im);ov.onclick=function(){if(!isStr)URL.revokeObjectURL(im.src);ov.remove();};document.body.appendChild(ov);}).catch(function(){toast("خطا در خواندن عکس","error");});}
+
+/* تراکنش تکرارشونده: هر ماه در روزِ ثبت، یک‌بار ساخته می‌شود (idempotent) */
+function ymAdd(ym,n){let y=+ym.slice(0,4),m=+ym.slice(5,7)+n;while(m>12){m-=12;y++;}while(m<1){m+=12;y--;}return y+"-"+String(m).padStart(2,"0");}
+function runRecurring(){
+  if(!Array.isArray(DB.rec)||!DB.rec.length)return;
+  const today=jTodayStr(),cur=today.slice(0,7);let changed=false;
+  DB.rec.forEach(function(r){
+    let guard=0;
+    while(r.last<cur&&guard++<36){
+      const ym=ymAdd(r.last,1);
+      const d=ym+"-"+String(Math.min(r.day,29)).padStart(2,"0");
+      if(d>today)break;
+      DB.tx.push({id:"t"+Date.now()+"-"+Math.random().toString(36).slice(2,7),type:r.type,cat:r.cat,amount:r.amount,date:d,note:r.note||"",acc:r.acc||"",tag:r.tag||"",rid:r.id,createdAt:new Date().toISOString()});
+      r.last=ym;changed=true;
+    }
+  });
+  if(changed)commit();
+}
+function renderRec(){
+  const el=$("#recList");if(!el)return;const list=Array.isArray(DB.rec)?DB.rec:[];
+  if(!list.length){el.innerHTML='<div class="hint">هنوز تراکنش تکرارشونده‌ای ندارید. با دکمه‌ی زیر یک تراکنش بسازید.</div>';return;}
+  el.innerHTML=list.map(function(r){const c=catInfo(r.type,r.cat);return '<div class="tx-item '+r.type+'"><div class="tx-main"><div class="tx-title">'+c.icon+' '+esc(c.name)+'</div><div class="tx-sub">هر ماه روز '+toFaDigits(r.day)+(r.note?' · '+esc(r.note):'')+'</div></div><div class="tx-amt">'+(r.type==="income"?"+":"−")+toFaMoney(r.amount)+'</div><button class="tx-del" data-recdel="'+r.id+'" title="توقف" aria-label="توقف">🗑</button></div>';}).join("");
+}
+async function delRec(id){
+  const r=(DB.rec||[]).find(function(x){return x.id===id;});if(!r)return;
+  if(!(await cConfirm("تکرار این تراکنش متوقف شود؟\n(تراکنش‌های قبلی حذف نمی‌شوند)",true)))return;
+  DB.rec=DB.rec.filter(function(x){return x.id!==id;});commit();renderAll();toast("تکرار متوقف شد");
+}
+
+/* گزارش سالانه */
+function reportRows(y){
+  const map={};
+  DB.tx.forEach(function(t){const d=canonicalDate(t.date);if(!d||+d.slice(0,4)!==y)return;const m=+d.slice(5,7);const k=t.type+"|"+t.cat;
+    if(!map[k]){const c=catInfo(t.type,t.cat);map[k]={type:t.type,name:c.name,icon:c.icon,m:new Array(12).fill(0),total:0};}
+    map[k].m[m-1]+=t.amount;map[k].total+=t.amount;});
+  return Object.values(map).sort(function(a,b){return a.type.localeCompare(b.type)||b.total-a.total;});
+}
+function renderReport(){
+  const ys=$("#rYear"),out=$("#rOut");if(!ys||!out)return;
+  const cur=jalaliToday()[0],set={};set[cur]=1;
+  DB.tx.forEach(function(t){const d=canonicalDate(t.date);if(d)set[+d.slice(0,4)]=1;});
+  const years=Object.keys(set).map(Number).sort(function(a,b){return a-b;});
+  const sel=(ys.value&&years.indexOf(+ys.value)>=0)?+ys.value:cur;
+  ys.innerHTML=years.map(function(y){return '<option value="'+y+'"'+(y===sel?' selected':'')+'>'+toFaDigits(y)+'</option>';}).join("");
+  const rows=reportRows(sel);
+  if(!rows.length){out.innerHTML='<div class="hint">برای سال '+toFaDigits(sel)+' تراکنشی ثبت نشده است.</div>';return;}
+  const inc=rows.filter(function(r){return r.type==="income";}),exp=rows.filter(function(r){return r.type!=="income";});
+  const sumArr=function(a){const s=new Array(12).fill(0);a.forEach(function(r){r.m.forEach(function(v,i){s[i]+=v;});});return s;};
+  const cell=function(v){return v?toFaMoney(v):"—";};
+  const line=function(r){return '<tr><td>'+r.icon+' '+esc(r.name)+'</td>'+r.m.map(function(v){return '<td>'+cell(v)+'</td>';}).join("")+'<td><b>'+cell(r.total)+'</b></td></tr>';};
+  const tot=function(label,a){const s=sumArr(a);return '<tr class="rtot"><td>'+label+'</td>'+s.map(function(v){return '<td>'+cell(v)+'</td>';}).join("")+'<td><b>'+cell(s.reduce(function(x,y){return x+y;},0))+'</b></td></tr>';};
+  const si=sumArr(inc),se=sumArr(exp),net=si.map(function(v,i){return v-se[i];});
+  let html='<div style="overflow-x:auto"><table class="rtable"><thead><tr><th>دسته</th>'+Array.from({length:12},function(_,i){return '<th>'+toFaDigits(i+1)+'</th>';}).join("")+'<th>جمع</th></tr></thead><tbody>'+inc.map(line).join("")+tot("جمع درآمد",inc)+exp.map(line).join("")+tot("جمع هزینه",exp)+'<tr class="rtot"><td>تراز</td>'+net.map(function(v){return '<td>'+(v?toFaMoney(v):"—")+'</td>';}).join("")+'<td><b>'+toFaMoney(net.reduce(function(x,y){return x+y;},0))+'</b></td></tr></tbody></table></div>';
+  const tg={};
+  DB.tx.forEach(function(t){const d=canonicalDate(t.date);if(!d||+d.slice(0,4)!==sel||!t.tag||t.type==="income")return;tg[t.tag]=(tg[t.tag]||0)+t.amount;});
+  const tk=Object.keys(tg);
+  if(tk.length)html+='<div class="hint" style="margin-top:8px">هزینه به تفکیک برچسب: '+tk.map(function(k){return tagInfo(k).n+": "+money(tg[k]);}).join(" · ")+'</div>';
+  out.innerHTML=html;
+}
+async function saveText(fname,text,mime){
+  const C=window.Capacitor;
+  if(C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.Filesystem){
+    try{const r=await C.Plugins.Filesystem.writeFile({path:fname,data:text,directory:"CACHE",encoding:"utf8"});if(C.Plugins.Share)await C.Plugins.Share.share({title:fname,files:[r.uri],dialogTitle:"ذخیره فایل"});toast("فایل ساخته شد ✅");}
+    catch(e){toast("ناموفق: "+(e&&e.message?e.message:e),"error");}
+    return;
+  }
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:mime}));a.download=fname;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(function(){URL.revokeObjectURL(a.href);},3000);toast("فایل ساخته شد ✅");
+}
+function exportReportCsv(){
+  const y=+($("#rYear").value||jalaliToday()[0]);
+  const head=["نوع","دسته"].concat(Array.from({length:12},function(_,i){return "ماه "+(i+1);}),["جمع"]);
+  const lines=[head.join(",")];
+  reportRows(y).forEach(function(r){lines.push([r.type==="income"?"درآمد":"هزینه",r.name].concat(r.m,[r.total]).map(function(v){return '"'+String(v).replace(/"/g,'""')+'"';}).join(","));});
+  saveText("hesabban-report-"+y+".csv","\ufeff"+lines.join("\n"),"text/csv");
+}
+function bindFeatures(){
+  const st=document.createElement("style");st.textContent=".rtable{border-collapse:collapse;font-size:12px;width:100%}.rtable th,.rtable td{border:1px solid rgba(128,128,128,.3);padding:4px 6px;white-space:nowrap}.rtot td{font-weight:bold}";document.head.appendChild(st);
+  const ab=$("#addRecBtn");if(ab)ab.onclick=function(){setEditMode(null);switchTab("tab-tx");openSheet();const c=$("#fRec");if(c)c.checked=true;};
+  const rl=$("#recList");if(rl)rl.onclick=function(e){const b=e.target.closest&&e.target.closest("[data-recdel]");if(b)delRec(b.getAttribute("data-recdel"));};
+  document.addEventListener("click",function(e){const b=e.target.closest&&e.target.closest("[data-rc]");if(b){e.preventDefault();showReceipt(b.getAttribute("data-rc"));}});
+  refreshRcSet();
+  const ys=$("#rYear");if(ys)ys.onchange=renderReport;
+  const rc=$("#rCsv");if(rc)rc.onclick=exportReportCsv;
+}
+
+function monthStats(p){
+  const r={inc:0,exp:0,cats:{}};
+  DB.tx.forEach(function(t){if(!inMonth(t,p))return;if(t.type==="income")r.inc+=t.amount;else{r.exp+=t.amount;r.cats[t.cat]=(r.cats[t.cat]||0)+t.amount;}});
+  return r;
+}
+function curPrefix(){return cursor[0]+"-"+String(cursor[1]).padStart(2,"0");}
+function insightLines(){
+  const p=curPrefix(),a=monthStats(p),b=monthStats(ymAdd(p,-1)),L=[];
+  if(!a.inc&&!a.exp)return ["در این ماه هنوز تراکنشی نیست."];
+  const top=Object.keys(a.cats).sort(function(x,y){return a.cats[y]-a.cats[x];})[0];
+  if(top){const c=catInfo("expense",top);L.push("🔝 پرخرج‌ترین دسته: "+c.icon+" "+c.name+" ("+money(a.cats[top])+"، "+toFaDigits(Math.round(a.cats[top]/a.exp*100))+"٪ هزینه‌ها)");}
+  Object.keys(a.cats).forEach(function(k){const pv=b.cats[k]||0;if(pv>0&&a.cats[k]>pv*1.3&&a.cats[k]-pv>0){const c=catInfo("expense",k);L.push("⚠️ "+c.name+" "+toFaDigits(Math.round((a.cats[k]/pv-1)*100))+"٪ بیشتر از ماه قبل");}});
+  if(b.exp>0){const d=Math.round((a.exp/b.exp-1)*100);L.push((d>0?"📈 هزینه کل ":"📉 هزینه کل ")+toFaDigits(Math.abs(d))+"٪ "+(d>0?"بیشتر":"کمتر")+" از ماه قبل");}
+  if(a.inc>0){const sv=a.inc-a.exp;L.push(sv>=0?"💰 پس‌انداز ماه: "+money(sv)+" ("+toFaDigits(Math.round(sv/a.inc*100))+"٪ درآمد)":"🚨 هزینه‌ها "+money(-sv)+" بیشتر از درآمد است");}
+  return L;
+}
+function renderInsights(){const el=$("#insights");if(!el)return;el.innerHTML="<h2>💡 تحلیل هوشمند</h2>"+insightLines().map(function(x){return "<div style='margin:4px 0'>"+esc(x)+"</div>";}).join("");}
+function summaryText(){
+  const p=curPrefix(),a=monthStats(p);
+  return ["📒 حساب‌بان - "+p,"درآمد: "+money(a.inc),"هزینه: "+money(a.exp),"تراز: "+money(a.inc-a.exp),""].concat(insightLines()).join("\n");
+}
+function shareText(){
+  const t=summaryText(),N=navigator;
+  if(N.share){N.share({text:t}).catch(function(){});}
+  else if(N.clipboard){N.clipboard.writeText(t).then(function(){toast("کپی شد");});}
+  else toast("اشتراک‌گذاری پشتیبانی نمی‌شود","error");
+}
+function shareImg(){
+  const lines=summaryText().split("\n"),cv=document.createElement("canvas");cv.width=800;cv.height=100+lines.length*54;
+  const g=cv.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,cv.width,cv.height);g.fillStyle="#111";g.direction="rtl";g.textAlign="right";g.font="bold 30px Tahoma,sans-serif";
+  lines.forEach(function(l,i){g.fillText(l,770,70+i*54);});
+  cv.toBlob(function(b){
+    const f=new File([b],"hesabban.png",{type:"image/png"});
+    if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f]}).catch(function(){});
+    else{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="hesabban.png";document.body.appendChild(a);a.click();a.remove();toast("تصویر ساخته شد");}
+  });
+}
+function bindFeatures2(){
+  const acc=$("#txFilterAcc");
+  if(acc&&!$("#txFilterTag")){const s=document.createElement("select");s.id="txFilterTag";s.className=acc.className;s.innerHTML='<option value="all">همه برچسب‌ها</option>'+TAGS.filter(function(t){return t.id;}).map(function(t){return '<option value="'+t.id+'">● '+t.n+'</option>';}).join("");s.onchange=renderTxList;acc.parentNode.insertBefore(s,acc.nextSibling);}
+  const a=$("#shareTxtBtn");if(a)a.onclick=shareText;const b=$("#shareImgBtn");if(b)b.onclick=shareImg;
+}
 function init(){
   loadDB();
   applyTheme();
@@ -2479,7 +3196,7 @@ function init(){
   fillDateSelectors();
   setDateInput(jTodayStr());
   setEditMode(null);
-  bindEvents();bindExtras();
+  bindEvents();bindExtras();bindFeatures();bindFeatures2();fillTagSelect();
   const pb=document.getElementById("pdfBtn");
   if(pb)pb.addEventListener("click",openReport);
   $("#repClose").onclick=closeReport;
@@ -2500,6 +3217,76 @@ for(let y=jalaliToday()[0];y<=jalaliToday()[0]+10;y++)fetchHolYear(y);
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);
 else init();
 
+</script>
+<script>
+(function(){
+ var LK="hesabban_lock",$=function(i){return document.getElementById(i)};
+ function get(){try{return JSON.parse(localStorage.getItem(LK))}catch(e){return null}}
+ function put(o){localStorage.setItem(LK,JSON.stringify(o))}
+ function norm(s){return String(s||"").trim().toLowerCase().replace(/[۰-۹]/g,function(d){return "۰۱۲۳۴۵۶۷۸۹".indexOf(d)}).replace(/[٠-٩]/g,function(d){return "٠١٢٣٤٥٦٧٨٩".indexOf(d)})}
+ async function hash(s,salt){
+  var t=salt+"|"+s;
+  try{var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
+  catch(e){var h=5381;for(var i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return "f"+h}
+ }
+ function rnd(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
+ function toast(m){var t=window.showToast||window.toast;if(typeof t==="function")try{t(m,"success");return}catch(e){}alert(m)}
+ function show(){var c=get();if(!c||!c.h)return;$("lockOv").style.display="flex";$("lkIn").value="";$("lkMsg").textContent="";
+  $("lkRec").style.display=(c.fails||0)>=5?"block":"none";
+  $("lkIn").setAttribute("inputmode",c.type==="pin"?"numeric":"text");
+  $("lkIn").placeholder=c.type==="pin"?"رمز عددی":"رمز عبور";$("lkQT").textContent=c.q||"";
+  var bb=$("lkBioGo");bb.style.display=(c.bio&&BIO())?"block":"none";if(c.bio&&BIO())setTimeout(bioTry,300);}
+ function hide(){$("lockOv").style.display="none"}
+ function BIO(){return window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.NativeBiometric}
+ async function bioTry(){
+  var c=get(),B=BIO();if(!c||!c.bio||!B)return;
+  try{await B.verifyIdentity({reason:"ورود به حساب‌بان",title:"قفل برنامه",negativeButtonText:"انصراف"});c.fails=0;put(c);hide()}catch(e){}
+ }
+ async function tryIn(){
+  var c=get();if(!c)return hide();
+  if(await hash(norm($("lkIn").value),c.s)===c.h){c.fails=0;put(c);hide()}
+  else{c.fails=(c.fails||0)+1;put(c);$("lkMsg").textContent="رمز اشتباه است"+(c.fails>=5?" — از بازیابی استفاده کنید":"");if(c.fails>=5)$("lkRec").style.display="block";$("lkIn").value=""}
+ }
+ function state(){var c=get();$("lockState").textContent=c&&c.h?"وضعیت: فعال ("+(c.type==="pin"?"PIN":"پسورد")+")":"وضعیت: غیرفعال";if(c&&c.h){$("lkType").value=c.type;$("lkT").value=String(c.t);$("lkBio").checked=!!c.bio}}
+ document.addEventListener("DOMContentLoaded",init0);if(document.readyState!=="loading")init0();
+ var done=false;
+ function init0(){
+  if(done)return;done=true;
+  $("lkGo").onclick=tryIn;$("lkBioGo").onclick=bioTry;$("lkIn").onkeydown=function(e){if(e.key==="Enter")tryIn()};
+  $("lkForgot").onclick=function(){$("lkRec").style.display="block"};
+  $("lkAnsGo").onclick=async function(){
+   var c=get();if(!c)return;
+   if(await hash(norm($("lkAns").value),c.s)===c.ah){localStorage.removeItem(LK);hide();state();toast("قفل حذف شد؛ می‌توانید رمز جدید بگذارید")}
+   else $("lkMsg").textContent="پاسخ اشتباه است";
+  };
+  $("lkWipe").onclick=function(){
+   if(!confirm("همهٔ داده‌ها برای همیشه پاک می‌شود. مطمئنید؟"))return;
+   if(!confirm("آخرین تأیید: ادامه می‌دهید؟"))return;
+   try{localStorage.removeItem("hesabban_data_v1");localStorage.removeItem("hesabban_cursor_v1");localStorage.removeItem(LK)}catch(e){}
+   location.reload();
+  };
+  $("lkSave").onclick=async function(){
+   var ty=$("lkType").value,p=norm($("lkNew").value),a=norm($("lkA").value);
+   if(ty==="pin"&&!/^\d{4,8}$/.test(p))return toast("PIN باید ۴ تا ۸ رقم باشد");
+   if(ty==="pass"&&p.length<4)return toast("پسورد حداقل ۴ نویسه باشد");
+   if(p!==norm($("lkNew2").value))return toast("تکرار رمز یکسان نیست");
+   if(a.length<2)return toast("پاسخ سؤال امنیتی را بنویسید");
+   var s=rnd(),bio=$("lkBio").checked;
+   if(bio){var B=BIO(),ok=false;try{ok=B&&(await B.isAvailable()).isAvailable}catch(e){}
+    if(!ok){bio=false;$("lkBio").checked=false;toast("اثرانگشت در این دستگاه یا نسخه در دسترس نیست؛ فقط رمز فعال شد")}}
+   put({type:ty,s:s,bio:bio,h:await hash(p,s),q:$("lkQ").value,ah:await hash(a,s),t:+$("lkT").value,fails:0});
+   $("lkNew").value=$("lkNew2").value=$("lkA").value="";state();toast("قفل فعال شد");
+  };
+  $("lkOff").onclick=function(){if(!get())return;if(!confirm("قفل غیرفعال شود؟"))return;localStorage.removeItem(LK);state();toast("قفل غیرفعال شد")};
+  state();show();
+ }
+ var hiddenAt=0;
+ document.addEventListener("visibilitychange",function(){
+  var c=get();if(!c||!c.h)return;
+  if(document.visibilityState==="hidden")hiddenAt=Date.now();
+  else if(hiddenAt&&Date.now()-hiddenAt>=(c.t||0)*60000)show();
+ });
+})();
 </script>
 <div class="rp-ov" id="repOv"><div class="rp-box">
   <div class="rp-top"><b>پیش‌نمایش گزارش</b><button id="repClose">✕</button></div>
