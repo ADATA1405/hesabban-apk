@@ -3238,7 +3238,8 @@ function summaryText(){
   return ["📒 حساب‌بان - "+p,"درآمد: "+money(a.inc),"هزینه: "+money(a.exp),"تراز: "+money(a.inc-a.exp),""].concat(insightLines()).join("\n");
 }
 function shareText(){
-  const t=summaryText(),N=navigator;
+  const t=summaryText(),N=navigator,C=window.Capacitor;
+  if(C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.Share){C.Plugins.Share.share({title:"خلاصه ماه",text:t,dialogTitle:"اشتراک خلاصه ماه"}).catch(function(e){const m=String(e&&e.message||e);if(/cancel/i.test(m))return;try{N.clipboard.writeText(t).then(function(){toast("اشتراک ناموفق بود؛ متن کپی شد");});}catch(x){toast("اشتراک ناموفق: "+m,"error");}});return;}
   if(N.share){N.share({text:t}).catch(function(){});}
   else if(N.clipboard){N.clipboard.writeText(t).then(function(){toast("کپی شد");});}
   else toast("اشتراک‌گذاری پشتیبانی نمی‌شود","error");
@@ -3247,6 +3248,15 @@ function shareImg(){
   const lines=summaryText().split("\n"),cv=document.createElement("canvas");cv.width=800;cv.height=100+lines.length*54;
   const g=cv.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,cv.width,cv.height);g.fillStyle="#111";g.direction="rtl";g.textAlign="right";g.font="bold 30px Tahoma,sans-serif";
   lines.forEach(function(l,i){g.fillText(l,770,70+i*54);});
+  const C=window.Capacitor;
+  if(C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.Filesystem){
+    (async function(){try{
+      const d=cv.toDataURL("image/png").split(",")[1];
+      const r=await C.Plugins.Filesystem.writeFile({path:"hesabban-summary.png",data:d,directory:"CACHE"});
+      if(C.Plugins.Share)await C.Plugins.Share.share({title:"hesabban-summary.png",files:[r.uri],dialogTitle:"ذخیره یا اشتراک تصویر"});
+    }catch(e){toast("ساخت تصویر ناموفق بود","error");}})();
+    return;
+  }
   cv.toBlob(function(b){
     const f=new File([b],"hesabban.png",{type:"image/png"});
     if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f]}).catch(function(){});
